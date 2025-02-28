@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,6 +13,7 @@
             --pure-black: #000000;
             --white: #FFFFFF;
             --neutral-gray: #F5F5F5;
+            --gold: #B8860B;
         }
         
         * {
@@ -25,43 +27,52 @@
             font-size: 1rem;
             line-height: 1.6;
             color: rgba(0, 0, 0, 0.85);
-            background-color: var(--neutral-gray);
+            background-color: var(--white);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+        }
+        
+        header {
+            background-color: var(--neutral-gray);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 600px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
-            text-align: center;
-        }
-        
-        .logo-container {
-            margin-bottom: 2rem;
+            padding: 0 2rem;
         }
         
         .logo {
-            max-width: 200px;
-            height: auto;
+            height: 40px;
+            width: auto;
         }
         
-        h1 {
+        .nav-link {
             font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            font-size: 2rem;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
+            font-weight: 500;
+            font-size: 1rem;
             color: var(--pure-black);
-            margin-bottom: 1.5rem;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
         }
         
-        p {
-            margin-bottom: 2rem;
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
         
         .btn {
@@ -70,8 +81,8 @@
             font-size: 1rem;
             letter-spacing: 0.02em;
             text-decoration: none;
-            padding: 1rem 2rem;
-            border: none;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--pure-black);
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -88,53 +99,251 @@
             transform: scale(1.05);
         }
         
-        .contact-info {
-            margin-top: 3rem;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 0.9rem;
-            line-height: 1.8;
-        }
-        
-        .contact-info a {
+        .btn-outline {
+            background-color: transparent;
             color: var(--pure-black);
-            text-decoration: none;
-            transition: color 0.3s ease;
         }
         
-        .contact-info a:hover {
-            color: #333;
-            text-decoration: underline;
+        .btn-outline:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .hero {
+            display: flex;
+            min-height: calc(100vh - 80px);
+            padding: 4rem 0;
+        }
+        
+        .hero-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            align-items: center;
+        }
+        
+        .hero-content {
+            flex: 1;
+            padding-right: 2rem;
+        }
+        
+        .hero-images {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            gap: 1rem;
+            position: relative;
+        }
+        
+        .hero-image {
+            border-radius: 50%;
+            overflow: hidden;
+            width: 100%;
+            padding-bottom: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero-image:nth-child(1) {
+            grid-column: 1;
+            grid-row: 1 / 2;
+            background-image: url('https://storage.googleapis.com/sales-assets-arbol/hero-1.jpg');
+        }
+        
+        .hero-image:nth-child(2) {
+            grid-column: 2;
+            grid-row: 1 / 2;
+            background-image: url('https://storage.googleapis.com/sales-assets-arbol/hero-2.jpg');
+        }
+        
+        .hero-image:nth-child(3) {
+            grid-column: 1;
+            grid-row: 2 / 3;
+            background-image: url('https://storage.googleapis.com/sales-assets-arbol/hero-3.jpg');
+        }
+        
+        .hero-image:nth-child(4) {
+            grid-column: 2;
+            grid-row: 2 / 3;
+            background-image: url('https://storage.googleapis.com/sales-assets-arbol/hero-4.jpg');
+        }
+        
+        .hero-image:nth-child(5) {
+            grid-column: 1;
+            grid-row: 3 / 4;
+            background-image: url('https://storage.googleapis.com/sales-assets-arbol/hero-5.jpg');
+        }
+        
+        .hero-image:nth-child(6) {
+            grid-column: 2;
+            grid-row: 3 / 4;
+            background-image: url('https://storage.googleapis.com/sales-assets-arbol/hero-6.jpg');
+        }
+        
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 2.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--pure-black);
+            margin-bottom: 1.5rem;
+        }
+        
+        h1 span {
+            color: var(--gold);
+        }
+        
+        p {
+            margin-bottom: 2rem;
+            font-size: 1.125rem;
+        }
+        
+        .cta-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .action-box {
+            background-color: var(--neutral-gray);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .action-box p {
+            margin-bottom: 0;
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        footer {
+            background-color: var(--pure-black);
+            color: var(--white);
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            height: 30px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-info {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 992px) {
+            .hero-container {
+                flex-direction: column;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 3rem;
+            }
+            
+            .hero-images {
+                max-width: 600px;
+            }
         }
         
         @media (max-width: 768px) {
-            .container {
-                padding: 1.5rem;
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
             }
             
             h1 {
-                font-size: 1.75rem;
+                font-size: 2rem;
+            }
+            
+            .cta-container {
+                flex-direction: column;
+            }
+            
+            .action-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo-container">
-            <img src="images/logo.png" alt="Arbol AI Logo" class="logo">
+    <header>
+        <div class="header-container">
+            <a href="/">
+                <img src="images/logo.png" alt="Arbol AI Logo" class="logo">
+            </a>
+            
+            <div class="contact-info">
+                <a href="https://wa.me/573168248411" class="btn btn-outline">+57 316 824 8411</a>
+                <a href="mailto:samuel@arbolai.co" class="btn btn-outline">EMAIL</a>
+                <a href="/brochure" class="btn btn-primary">BROCHURE</a>
+            </div>
         </div>
-        
-        <h1>Soluciones de Inteligencia Artificial para Equipos de Ventas</h1>
-        
-        <p>Somos una compañía colombiana especializada en el desarrollo de herramientas de inteligencia artificial.</p>
-        
-        <a href="/brochure" class="btn btn-primary">Ver Brochure</a>
-        
-        <div class="contact-info">
-            <p>Samuel Giraldo Concha - CEO</p>
-            <p><a href="https://wa.me/573168248411">+57 316 824 8411</a></p>
-            <p><a href="mailto:samuel@arbolai.co">samuel@arbolai.co</a></p>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>Asistentes IA para empresas.</h1>
+                    
+                    <p>Somos una compañía colombiana especializada en el desarrollo de herramientas de inteligencia artificial para ayudar a equipos de trabajo a <strong>reducir errores y automatizar procesos</strong> que involucren interpretación de información.</p>
+                    
+                    <div class="cta-container">
+                        <a href="#asistentes" class="btn btn-primary">NUESTROS ASISTENTES</a>
+                        <a href="/brochure" class="btn btn-outline">VER BROCHURE</a>
+                    </div>
+                    
+                    <div class="action-box">
+                        <p>Samuel Giraldo Concha - CEO</p>
+                        <a href="#" class="btn btn-primary">AGENDAR REUNIÓN</a>
+                    </div>
+                </div>
+                
+                <div class="hero-images">
+                    <div class="hero-image"></div>
+                    <div class="hero-image"></div>
+                    <div class="hero-image"></div>
+                    <div class="hero-image"></div>
+                    <div class="hero-image"></div>
+                    <div class="hero-image"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-container">
+            <img src="images/logo.png" alt="Arbol AI Logo" class="footer-logo">
+            <div class="footer-info">
+                <p>&copy; 2025 Arbol AI. Todos los derechos reservados.</p>
+            </div>
         </div>
-    </div>
+    </footer>
 </body>
 </html>
