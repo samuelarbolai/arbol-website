@@ -25,7 +25,7 @@
             font-size: 1rem;
             line-height: 1.6;
             color: rgba(0, 0, 0, 0.85);
-            background-color: var(--white);
+            background-color: var(--neutral-gray);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -88,6 +88,25 @@
             transform: scale(1.05);
         }
         
+        .contact-info {
+            margin-top: 3rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        .contact-info a {
+            color: var(--pure-black);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-info a:hover {
+            color: #333;
+            text-decoration: underline;
+        }
+        
         @media (max-width: 768px) {
             .container {
                 padding: 1.5rem;
@@ -110,6 +129,12 @@
         <p>Somos una compañía colombiana especializada en el desarrollo de herramientas de inteligencia artificial.</p>
         
         <a href="/brochure" class="btn btn-primary">Ver Brochure</a>
+        
+        <div class="contact-info">
+            <p>Samuel Giraldo Concha - CEO</p>
+            <p><a href="https://wa.me/573168248411">+57 316 824 8411</a></p>
+            <p><a href="mailto:samuel@arbolai.co">samuel@arbolai.co</a></p>
+        </div>
     </div>
 </body>
 </html>
