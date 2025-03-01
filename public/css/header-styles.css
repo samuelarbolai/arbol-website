@@ -17,7 +17,7 @@ header {
 }
 
 .logo {
-    height: 40px;
+    height: 44px; /* Increased from 40px to 44px (10% bigger) */
     width: auto;
 }
 

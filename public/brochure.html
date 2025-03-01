@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/css/header-styles.css">
     <!-- Load site configuration -->
     <script src="/js/config.js"></script>
+    <!-- Load translations -->
+    <script src="/js/translations.js"></script>
     <style>
         :root {
             --pure-black: #000000;
@@ -36,18 +38,28 @@
         
         /* Header styles are in header-styles.css */
         
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .pdf-container {
             flex: 1;
             display: flex;
             flex-direction: column;
-            padding: 1rem 0;
+            padding: 4rem 0 1rem; /* Added top padding to account for transparent header */
+            width: 100%;
         }
         
         .pdf-embed {
@@ -120,10 +132,12 @@
     <!-- Header container that will be populated by JavaScript -->
     <div id="headerContainer"></div>
     
-    <main class="pdf-container">
-        <div class="container" style="text-align: center;">
-            <a href="https://storage.googleapis.com/sales-assets-arbol/Arbol%20AI%20-%20Brochure.pdf" download class="download-button">Descargar PDF</a>
-            <iframe src="https://storage.googleapis.com/sales-assets-arbol/Arbol%20AI%20-%20Brochure.pdf" class="pdf-embed" title="Arbol AI Brochure"></iframe>
+    <main>
+        <div class="pdf-container">
+            <div class="container" style="text-align: center;">
+                <a href="https://storage.googleapis.com/sales-assets-arbol/Arbol%20AI%20-%20Brochure.pdf" download class="download-button" data-translate="download-pdf">Descargar PDF</a>
+                <iframe src="https://storage.googleapis.com/sales-assets-arbol/Arbol%20AI%20-%20Brochure.pdf" class="pdf-embed" title="Arbol AI Brochure"></iframe>
+            </div>
         </div>
     </main>
     
@@ -131,7 +145,7 @@
         <div class="footer-container">
             <img src="images/logo.png" alt="Arbol AI Logo" class="footer-logo">
             <div class="footer-info">
-                <p>&copy; 2025 Arbol AI. Todos los derechos reservados.</p>
+                <p data-translate="copyright">&copy; 2025 Arbol AI. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>

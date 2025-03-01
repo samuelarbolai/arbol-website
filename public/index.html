@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/css/header-styles.css">
     <!-- Load site configuration -->
     <script src="/js/config.js"></script>
+    <!-- Load translations -->
+    <script src="/js/translations.js"></script>
     <style>
         :root {
             --pure-black: #000000;
@@ -37,11 +39,18 @@
         
         /* Header styles are in header-styles.css */
         
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
         .hero {
             display: flex;
             min-height: 100vh;
             padding: 0;
             align-items: center;
+            flex: 1;
         }
         
         .hero-container {
@@ -50,8 +59,8 @@
             margin: 0 auto;
             padding: 0 2rem;
             align-items: center;
-            justify-content: center; /* Center horizontally */
-            min-height: auto; /* Remove fixed height constraint */
+            justify-content: center;
+            width: 100%;
         }
         
         .hero-content {
@@ -59,7 +68,7 @@
             padding-right: 2rem;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Center content vertically */
+            justify-content: center;
         }
         
         .hero-images {
@@ -250,17 +259,17 @@
         <section class="hero">
             <div class="hero-container">
                 <div class="hero-content">
-                    <h1>Asistentes IA para empresas.</h1>
+                    <h1 data-translate="hero-title">Asistentes IA para empresas.</h1>
                     
-                    <p>Somos una compañía colombiana especializada en el desarrollo de herramientas de inteligencia artificial para ayudar a equipos de trabajo a <strong>reducir errores y automatizar procesos</strong> que involucren interpretación de información.</p>
+                    <p data-translate="hero-description">Nos especializamos en el desarrollo de herramientas de inteligencia artificial para ayudar a equipos de trabajo a <strong>reducir errores y automatizar procesos</strong> que involucren interpretación de información.</p>
                     
                     <div class="cta-container">
-                        <a href="/brochure" class="btn btn-outline">VER BROCHURE</a>
+                        <a href="/brochure" class="btn btn-outline" data-translate="view-brochure">VER BROCHURE</a>
                     </div>
                     
                     <div class="action-box">
-                        <p>Samuel Giraldo Concha - CEO</p>
-                        <a href="https://cal.com/samuel-arbol-ai" class="btn btn-primary">AGENDAR REUNIÓN</a>
+                        <p data-translate="ceo-title">Samuel Giraldo Concha - CEO</p>
+                        <a href="https://cal.com/samuel-arbol-ai" class="btn btn-primary" data-translate="schedule-meeting">AGENDAR REUNIÓN</a>
                     </div>
                 </div>
                 
@@ -280,7 +289,7 @@
         <div class="footer-container">
             <img src="images/logo.png" alt="Arbol AI Logo" class="footer-logo">
             <div class="footer-info">
-                <p>&copy; 2025 Arbol AI. Todos los derechos reservados.</p>
+                <p data-translate="copyright">&copy; 2025 Arbol AI. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>

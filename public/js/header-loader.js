@@ -24,8 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Update contact information from config
                 updateContactInfo();
                 
-                if (currentPath === '/' || currentPath === '/index.html') {
-                    // Homepage style - transparent header
+                // Apply transparent header to both index and brochure pages
+                if (currentPath === '/' || currentPath === '/index.html' || currentPath === '/brochure' || currentPath === '/brochure.html') {
+                    // Transparent header style
                     header.style.backgroundColor = 'transparent';
                     header.style.position = 'absolute';
                     header.style.width = '100%';
@@ -39,6 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         button.style.color = 'var(--pure-black)';
                     });
                 }
+                
+                // Apply translations based on browser language
+                applyTranslations();
             }
         })
         .catch(error => {
@@ -105,5 +109,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         }
+    }
+    
+    // Function to apply translations based on browser language
+    function applyTranslations() {
+        // Get browser language
+        const userLang = navigator.language || navigator.userLanguage;
+        const isSpanish = userLang.startsWith('es');
+        
+        // Get all translatable elements
+        const translatableElements = document.querySelectorAll('[data-translate]');
+        
+        translatableElements.forEach(element => {
+            const key = element.getAttribute('data-translate');
+            if (key && window.translations) {
+                element.textContent = isSpanish ? 
+                    window.translations[key].es : 
+                    window.translations[key].en;
+            }
+        });
     }
 });
