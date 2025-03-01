@@ -19,6 +19,12 @@ header {
 .logo {
     height: 44px; /* Increased from 40px to 44px (10% bigger) */
     width: auto;
+    display: block; /* Ensures proper vertical alignment */
+}
+
+#logo-link {
+    display: flex;
+    align-items: center; /* Ensures vertical centering */
 }
 
 .contact-info {
