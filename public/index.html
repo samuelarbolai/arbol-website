@@ -109,8 +109,9 @@
         
         .hero {
             display: flex;
-            min-height: calc(100vh - 80px);
-            padding: 4rem 0;
+            min-height: 100vh;
+            padding: 0;
+            align-items: center;
         }
         
         .hero-container {
@@ -119,11 +120,16 @@
             margin: 0 auto;
             padding: 0 2rem;
             align-items: center;
+            justify-content: center; /* Center horizontally */
+            min-height: auto; /* Remove fixed height constraint */
         }
         
         .hero-content {
             flex: 1;
             padding-right: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
         }
         
         .hero-images {
@@ -291,7 +297,7 @@
     </style>
 </head>
 <body>
-    <header>
+    <header style="position: absolute; width: 100%; top: 0; left: 0;">
         <div class="header-container">
             <a href="/">
                 <img src="images/logo.png" alt="Arbol AI Logo" class="logo">
@@ -299,7 +305,7 @@
             
             <div class="contact-info">
                 <a href="https://wa.me/573168248411" class="btn btn-outline">+57 316 824 8411</a>
-                <a href="mailto:samuel@arbolai.co" class="btn btn-outline">EMAIL</a>
+                <a href="mailto:samuel@arbolai.co" class="btn btn-outline">samuel@arbolai.co</a>
                 <a href="/brochure" class="btn btn-primary">BROCHURE</a>
             </div>
         </div>
@@ -319,7 +325,7 @@
                     
                     <div class="action-box">
                         <p>Samuel Giraldo Concha - CEO</p>
-                        <a href="#" class="btn btn-primary">AGENDAR REUNIÓN</a>
+                        <a href="https://cal.com/samuel-arbol-ai" class="btn btn-primary">AGENDAR REUNIÓN</a>
                     </div>
                 </div>
                 
