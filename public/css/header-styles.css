@@ -5,26 +5,28 @@ header {
     padding: 1rem 0;
     position: relative;
     z-index: 100;
+    width: 100%;
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
 .logo {
-    height: 44px; /* Increased from 40px to 44px (10% bigger) */
+    height: 44px;
     width: auto;
-    display: block; /* Ensures proper vertical alignment */
+    display: block;
 }
 
 #logo-link {
     display: flex;
-    align-items: center; /* Ensures vertical centering */
+    align-items: center;
 }
 
 .contact-info {
@@ -61,6 +63,7 @@ header {
     .header-container {
         flex-direction: column;
         gap: 1rem;
+        padding: 0 1rem;
     }
     
     .contact-info {

@@ -34,6 +34,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
         
         /* Header styles are in header-styles.css */
@@ -58,14 +59,16 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            padding: 6rem 0 2rem; /* Increased top padding to account for transparent header */
             width: 100%;
+            /* Adjusted to account for header, button and footer */
+            height: calc(100vh - 6rem);
+            padding-top: 6rem; /* Account for the transparent header */
         }
         
         .pdf-embed {
-            flex: 1;
             width: 100%;
-            height: calc(100vh - 200px); /* Adjusted height for better visibility */
+            /* Subtract download button height and padding */
+            height: calc(100vh - 12rem);
             border: none;
             background-color: #f5f5f5;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -102,7 +105,7 @@
         }
         
         .download-button {
-            display: inline-block;
+            display: none;
             font-family: 'Outfit', sans-serif;
             font-weight: 500;
             font-size: 1rem;
@@ -111,7 +114,7 @@
             background-color: var(--pure-black);
             color: var(--white);
             border-radius: 4px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             transition: background-color 0.3s ease;
         }
         
@@ -121,7 +124,7 @@
         
         @media (max-width: 768px) {
             .pdf-embed {
-                height: calc(100vh - 220px);
+                height: calc(100vh - 14rem);
             }
             
             .footer-container {
