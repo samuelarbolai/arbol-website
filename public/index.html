@@ -12,6 +12,8 @@
     <script src="/js/config.js"></script>
     <!-- Load translations -->
     <script src="/js/translations.js"></script>
+    <!-- Load video configuration -->
+    <script src="/js/video-config.js"></script>
     <style>
         :root {
             --pure-black: #000000;
@@ -49,7 +51,7 @@
         
         .hero {
             display: flex;
-            min-height: 100vh;
+            min-height: 80vh;
             padding: 0;
             align-items: center;
             flex: 1;
@@ -59,31 +61,33 @@
         
         .hero-container {
             display: flex;
-            max-width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             width: 100%;
         }
         
-        .hero-content {
-            flex: 1;
+        .hero-content-left {
+            width: 50%;
             padding-right: 2rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
         
-        .hero-images {
-            flex: 1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr 1fr;
-            gap: 1rem;
-            position: relative;
+        .hero-content-right {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 3rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        
         
         h1 {
             font-family: 'Outfit', sans-serif;
@@ -93,6 +97,17 @@
             letter-spacing: -0.02em;
             color: var(--pure-black);
             margin-bottom: 1.5rem;
+        }
+        
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 2rem;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            color: var(--pure-black);
+            margin-bottom: 1.5rem;
+            text-align: center;
         }
         
         h1 span {
@@ -106,24 +121,32 @@
         
         .cta-container {
             display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
         }
         
-        .action-box {
-            background-color: var(--white);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-top: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .action-box p {
-            margin-bottom: 0;
+        .cta-heading {
             font-family: 'Outfit', sans-serif;
-        }   
+            font-weight: 500;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .btn {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
         
         .btn-primary {
             background-color: var(--pure-black);
@@ -133,7 +156,7 @@
         
         .btn-primary:hover {
             background-color: #333;
-            transform: scale(1.05);
+            transform: scale(1.02);
         }
         
         .btn-outline {
@@ -144,6 +167,13 @@
         
         .btn-outline:hover {
             background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .divider {
+            width: 100%;
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.1);
+            margin: 0.5rem 0 1.5rem 0;
         }
         
         footer {
@@ -177,18 +207,89 @@
             align-items: center;
         }
         
+        /* Use Case Section Styles */
+        .use-cases {
+            background-color: var(--white);
+            padding: 5rem 2rem;
+            width: 100%;
+        }
+        
+        .use-cases-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .video-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        
+        .video-card {
+            width: 30%;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--neutral-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-info {
+            padding: 1.5rem;
+        }
+        
+        .video-info h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--pure-black);
+        }
+        
+        .video-info p {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+        
         @media (max-width: 992px) {
             .hero-container {
                 flex-direction: column;
             }
             
-            .hero-content {
+            .hero-content-left, 
+            .hero-content-right {
+                width: 100%;
                 padding-right: 0;
-                margin-bottom: 3rem;
+                margin-bottom: 2rem;
             }
             
-            .hero-images {
-                max-width: 600px;
+            .video-gallery {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .video-card {
+                width: 100%;
+                max-width: 500px;
             }
         }
         
@@ -197,13 +298,12 @@
                 font-size: 2rem;
             }
             
-            .cta-container {
-                flex-direction: column;
+            h2 {
+                font-size: 1.75rem;
             }
             
-            .action-box {
-                flex-direction: column;
-                text-align: center;
+            .hero-content-right {
+                padding: 2rem;
             }
             
             .footer-container {
@@ -226,28 +326,29 @@
     <main>
         <section class="hero">
             <div class="hero-container">
-                <div class="hero-content">
+                <div class="hero-content-left">
                     <h1 data-translate="hero-title">Asistentes IA para empresas.</h1>
                     
                     <p data-translate="hero-description">Nos especializamos en el desarrollo de herramientas de inteligencia artificial para ayudar a equipos de trabajo a <strong>reducir errores y automatizar procesos</strong> que involucren interpretación de información.</p>
-                    
-                    <div class="cta-container">
-                        <a href="/brochure" class="btn btn-outline" data-translate="view-brochure">VER BROCHURE</a>
-                    </div>
-                    
-                    <div class="action-box">
-                        <p data-translate="ceo-title">Samuel Giraldo Concha - CEO</p>
-                        <a href="https://cal.com/samuel-arbol-ai" class="btn btn-primary" data-translate="schedule-meeting">AGENDAR REUNIÓN</a>
-                    </div>
                 </div>
                 
-                <div class="hero-images">
-                    <div class="hero-image"></div>
-                    <div class="hero-image"></div>
-                    <div class="hero-image"></div>
-                    <div class="hero-image"></div>
-                    <div class="hero-image"></div>
-                    <div class="hero-image"></div>
+                <div class="hero-content-right">
+                    <div class="cta-container">
+                        <div>
+                            <p class="ceo-info" data-translate="ceo-title">Samuel Giraldo Concha - CEO</p>
+                            <a href="https://cal.com/samuel-arbol-ai" class="btn btn-primary" data-translate="schedule-meeting">Book a demo with Samuel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="use-cases">
+            <div class="use-cases-container">
+                <h2>Nuestros Asistentes en Acción</h2>
+                
+                <div id="videoGallery" class="video-gallery">
+                    <!-- Video cards will be dynamically inserted here -->
                 </div>
             </div>
         </section>
@@ -264,5 +365,78 @@
 
     <!-- Load the header component -->
     <script src="/js/header-loader.js"></script>
+    
+    <!-- Script to dynamically load videos from config -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoGallery = document.getElementById('videoGallery');
+            
+            // Check if videoConfig is available
+            if (window.videoConfig && window.videoConfig.agentVideos) {
+                const videos = window.videoConfig.agentVideos;
+                
+                // Create video card for voice agent
+                if (videos.voiceAgent) {
+                    createVideoCard(
+                        videos.voiceAgent.videoId,
+                        videos.voiceAgent.title,
+                        videos.voiceAgent.description,
+                        'Asistente de Voz'
+                    );
+                }
+                
+                // Create video card for chat agent
+                if (videos.chatAgent) {
+                    createVideoCard(
+                        videos.chatAgent.videoId,
+                        videos.chatAgent.title,
+                        videos.chatAgent.description,
+                        'Asistente de Chat'
+                    );
+                }
+                
+                // Create video card for email agent
+                if (videos.emailAgent) {
+                    createVideoCard(
+                        videos.emailAgent.videoId,
+                        videos.emailAgent.title,
+                        videos.emailAgent.description,
+                        'Asistente de Email'
+                    );
+                }
+            } else {
+                // Fallback if config is not available
+                console.warn('Video configuration not found. Using placeholder content.');
+                videoGallery.innerHTML = `
+                    <div class="video-card">
+                        <div class="video-info">
+                            <h3>No se encontraron videos</h3>
+                            <p>Por favor, configure los videos en el archivo video-config.js</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Function to create a video card
+            function createVideoCard(videoId, title, description, ariaTitle) {
+                const videoCard = document.createElement('div');
+                videoCard.className = 'video-card';
+                
+                const embedUrl = window.videoConfig.getYouTubeEmbedUrl(videoId);
+                
+                videoCard.innerHTML = `
+                    <div class="video-container">
+                        <iframe src="${embedUrl}" title="${ariaTitle}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>${title}</h3>
+                        <p>${description}</p>
+                    </div>
+                `;
+                
+                videoGallery.appendChild(videoCard);
+            }
+        });
+    </script>
 </body>
 </html>
