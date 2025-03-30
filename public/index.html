@@ -90,6 +90,57 @@
             margin-bottom: 2rem;
         }
         
+        .capabilities-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--white);
+            padding: 3rem 8%;
+            margin-bottom: 2rem;
+        }
+        
+        .capabilities-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .capabilities-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .capabilities-list {
+            width: 100%;
+            max-width: 800px;
+            list-style-type: none;
+        }
+        
+        .capabilities-list li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 2rem;
+            font-size: 1.125rem;
+        }
+        
+        .capabilities-list li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            background-color: var(--pure-black);
+            border-radius: 50%;
+        }
+        
         .use-agent-container {
             width: 100%;
             background-color: var(--white);
@@ -292,6 +343,10 @@
             .use-agent-section {
                 padding: 2rem 8%; /* Keep 8% horizontal padding */
             }
+            
+            .capabilities-section {
+                padding: 2rem 8%; /* Keep 8% horizontal padding */
+            }
         }
         
         @media (max-width: 768px) {
@@ -311,12 +366,20 @@
                 padding: 1.5rem 8%; /* Keep 8% horizontal padding */
             }
             
+            .capabilities-section {
+                padding: 1.5rem 8%; /* Keep 8% horizontal padding */
+            }
+            
             .use-agent-container {
                 padding: 1.5rem;
             }
             
             .agent-columns {
                 gap: 3rem;
+            }
+            
+            .capabilities-list li {
+                font-size: 1rem;
             }
             
             .footer-container {
@@ -380,6 +443,20 @@
                         <div id="emailVideo" class="video-container-wrapper"></div>
                     </div>
                 </div>
+            </div>
+        </section>
+        
+        <!-- Agent Capabilities section with white background -->
+        <section class="capabilities-section">
+            <div class="capabilities-container">
+                <h2 class="capabilities-title">Capabilities of our agent</h2>
+                <ul class="capabilities-list">
+                    <li>Guiding customers in a conversational way.</li>
+                    <li>Clone a voice to make the agent sound like you or better.</li>
+                    <li>Book meetings.</li>
+                    <li>Build and send detailed quotes.</li>
+                    <li>Consult documents like pricing, inventories, etc.</li>
+                </ul>
             </div>
         </section>
     </main>
