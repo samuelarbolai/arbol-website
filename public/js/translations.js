@@ -54,8 +54,16 @@ window.translations = {
         'es': 'Precios'
     },
     'pricing-subtitle': {
-        'en': 'Two-Part Pricing Structure',
-        'es': 'Estructura de Precios de Dos Partes'
+        'en': 'Choose the plan that works best for your business',
+        'es': 'Elige el plan que mejor funcione para tu negocio'
+    },
+    'success-based': {
+        'en': 'Success-Based Pricing',
+        'es': 'Precio Basado en Resultados'
+    },
+    'fixed-pricing': {
+        'en': 'Fixed Monthly Pricing',
+        'es': 'Precio Mensual Fijo'
     },
     'monthly-subscription': {
         'en': 'Monthly Subscription',
@@ -64,6 +72,10 @@ window.translations = {
     'success-fee': {
         'en': 'Success-Based Fee',
         'es': 'Tarifa Basada en Resultados'
+    },
+    'setup-fee': {
+        'en': 'One-Time Setup Fee',
+        'es': 'Cargo Único de Configuración'
     },
     'growth-scaling': {
         'en': 'Growth-Based Scaling',
@@ -80,5 +92,13 @@ window.translations = {
     'get-started': {
         'en': 'How to Get Started',
         'es': 'Cómo Empezar'
+    },
+    'schedule-demo': {
+        'en': 'Schedule a Demo',
+        'es': 'Programar una Demostración'
+    },
+    'core-features': {
+        'en': 'Core Features',
+        'es': 'Características Principales'
     }
 };
