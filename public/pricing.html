@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbol AI | Pricing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/header-styles.css">
+    <!-- Load site configuration -->
+    <script src="/js/config.js"></script>
+    <!-- Load translations -->
+    <script src="/js/translations.js"></script>
+    <style>
+        :root {
+            --pure-black: #000000;
+            --white: #FFFFFF;
+            --neutral-gray: #F5F5F5;
+            --light-green: #E6F7EF;
+            --dark-green: #0A5C36;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: rgba(0, 0, 0, 0.85);
+            background-color: var(--neutral-gray);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        main {
+            flex: 1;
+            padding-top: 6rem; /* Account for fixed header */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .pricing-header {
+            text-align: center;
+            padding: 3rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .pricing-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 2.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--pure-black);
+            margin-bottom: 1.5rem;
+        }
+        
+        .pricing-header p {
+            font-size: 1.25rem;
+            margin-bottom: 0;
+        }
+        
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 0.5rem;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .toggle-btn {
+            padding: 0.75rem 1.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-btn.active {
+            background-color: var(--pure-black);
+            color: var(--white);
+        }
+        
+        .pricing-plans {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        .pricing-plan {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 100%;
+            max-width: 550px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .pricing-plan:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .plan-header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .plan-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1.75rem;
+            color: var(--pure-black);
+            margin-bottom: 0.5rem;
+        }
+        
+        .plan-header p {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 0;
+        }
+        
+        .plan-price {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 1rem 0;
+            color: var(--pure-black);
+        }
+        
+        .plan-price .currency {
+            font-size: 1.5rem;
+            vertical-align: super;
+            margin-right: 0.25rem;
+        }
+        
+        .plan-price .period {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.7;
+        }
+        
+        .plan-description {
+            margin-bottom: 1.5rem;
+        }
+        
+        .plan-features {
+            margin-bottom: 2rem;
+        }
+        
+        .plan-features h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .features-list {
+            list-style-type: none;
+        }
+        
+        .features-list li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .features-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--dark-green);
+            font-weight: bold;
+        }
+        
+        .additional-fees {
+            background-color: var(--light-green);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .additional-fees h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--dark-green);
+        }
+        
+        .additional-fees p {
+            color: var(--dark-green);
+            margin-bottom: 0;
+        }
+        
+        .cta-btn {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            background-color: var(--pure-black);
+            color: var(--white);
+            border-radius: 4px;
+            display: block;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .cta-btn:hover {
+            background-color: #333;
+        }
+        
+        .plan-note {
+            font-size: 0.875rem;
+            opacity: 0.7;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+        
+        .tiers-list {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tiers-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+        
+        .tiers-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .currency-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+        
+        .currency-btn {
+            padding: 0.5rem 1rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            background-color: transparent;
+        }
+        
+        .currency-btn.active {
+            background-color: var(--pure-black);
+            color: var(--white);
+            border-color: var(--pure-black);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        footer {
+            background-color: var(--pure-black);
+            color: var(--white);
+            padding: 1.5rem 0;
+            margin-top: auto;
+            width: 100%;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            height: 30px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-info {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+        }
+        
+        @media (max-width: 992px) {
+            .pricing-plans {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pricing-plan {
+                max-width: 100%;
+                width: calc(100% - 2rem);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-header h1 {
+                font-size: 2rem;
+            }
+            
+            .pricing-header p {
+                font-size: 1.125rem;
+            }
+            
+            .pricing-toggle {
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 80%;
+            }
+            
+            .toggle-btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header container that will be populated by JavaScript -->
+    <div id="headerContainer"></div>
+    
+    <main>
+        <div class="pricing-header">
+            <h1 data-translate="pricing-title">Pricing</h1>
+            <p>Choose the pricing model that works best for your business</p>
+        </div>
+        
+        <div class="currency-toggle">
+            <button class="currency-btn active" data-currency="usd">USD</button>
+            <button class="currency-btn" data-currency="cop">COP</button>
+        </div>
+        
+        <div class="pricing-toggle">
+            <div class="toggle-btn active" data-plan="success-based">Success-Based Pricing</div>
+            <div class="toggle-btn" data-plan="fixed">Fixed Pricing</div>
+        </div>
+        
+        <section class="pricing-plans" id="success-based-pricing">
+            <div class="pricing-plan">
+                <div class="plan-header">
+                    <h2>Success-Based Pricing</h2>
+                    <p>Pay only when our AI helps you convert leads</p>
+                </div>
+                
+                <div class="plan-price" id="success-base-price-usd">
+                    <span class="currency">$</span>199<span class="period">/month</span>
+                </div>
+                
+                <div class="plan-price hidden" id="success-base-price-cop">
+                    <span class="currency">$</span>815.900<span class="period">/month</span>
+                </div>
+                
+                <div class="plan-description">
+                    <p>Base subscription that includes all core features and covers up to 500,000 interactions per month.</p>
+                </div>
+                
+                <div class="additional-fees">
+                    <h3>Success-Based Fee</h3>
+                    <p id="success-fee-usd"><strong>$50 per successfully converted lead</strong></p>
+                    <p id="success-fee-cop" class="hidden"><strong>$205.000 COP por cada lead convertido exitosamente</strong></p>
+                    <p>You only pay when our AI helps you win business</p>
+                </div>
+                
+                <div class="plan-features">
+                    <h3>Core Features</h3>
+                    <ul class="features-list">
+                        <li>24/7 WhatsApp conversation management</li>
+                        <li>Automated customer calls</li>
+                        <li>Calendar integration with Cal.com</li>
+                        <li>Document generation capabilities</li>
+                        <li>Basic analytics dashboard</li>
+                        <li>Email and chat support</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3>Growth-Based Scaling</h3>
+                    <p>As your business grows and usage increases:</p>
+                    <ul class="tiers-list" id="tiers-list-usd">
+                        <li><strong>Tier 1:</strong> $199/month (base) - up to usage threshold</li>
+                        <li><strong>Tier 2:</strong> $399/month - with doubled capacity</li>
+                        <li><strong>Tier 3:</strong> $599/month - with tripled capacity</li>
+                    </ul>
+                    <ul class="tiers-list hidden" id="tiers-list-cop">
+                        <li><strong>Nivel 1:</strong> $815.900 COP/mes (base) - hasta el umbral de uso</li>
+                        <li><strong>Nivel 2:</strong> $1.635.900 COP/mes - con capacidad duplicada</li>
+                        <li><strong>Nivel 3:</strong> $2.455.900 COP/mes - con capacidad triplicada</li>
+                    </ul>
+                    <p>Additional tiers available for enterprise-level usage</p>
+                </div>
+                
+                <a href="https://cal.com/samuel-arbol-ai" class="cta-btn">Schedule a Demo</a>
+                <p class="plan-note">Pricing effective as of April 2025. Terms and conditions apply.</p>
+            </div>
+        </section>
+        
+        <section class="pricing-plans hidden" id="fixed-pricing">
+            <div class="pricing-plan">
+                <div class="plan-header">
+                    <h2>Fixed Monthly Pricing</h2>
+                    <p>Predictable monthly cost with one-time setup fee</p>
+                </div>
+                
+                <div class="plan-price" id="fixed-base-price-usd">
+                    <span class="currency">$</span>199<span class="period">/month</span>
+                </div>
+                
+                <div class="plan-price hidden" id="fixed-base-price-cop">
+                    <span class="currency">$</span>815.900<span class="period">/month</span>
+                </div>
+                
+                <div class="plan-description">
+                    <p>Fixed monthly subscription with all features included and no additional per-lead charges.</p>
+                </div>
+                
+                <div class="additional-fees">
+                    <h3>One-Time Setup Fee</h3>
+                    <p id="setup-fee-usd"><strong>$600 one-time setup fee</strong></p>
+                    <p id="setup-fee-cop" class="hidden"><strong>$2.460.000 COP cargo único de configuración</strong></p>
+                    <p>Covers implementation, training, and initial configuration</p>
+                </div>
+                
+                <div class="plan-features">
+                    <h3>Core Features</h3>
+                    <ul class="features-list">
+                        <li>24/7 WhatsApp conversation management</li>
+                        <li>Automated customer calls</li>
+                        <li>Calendar integration with Cal.com</li>
+                        <li>Document generation capabilities</li>
+                        <li>Basic analytics dashboard</li>
+                        <li>Email and chat support</li>
+                        <li>Unlimited converted leads with no extra charges</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3>Growth-Based Scaling</h3>
+                    <p>As your business grows and usage increases:</p>
+                    <ul class="tiers-list" id="fixed-tiers-list-usd">
+                        <li><strong>Tier 1:</strong> $199/month (base) - up to usage threshold</li>
+                        <li><strong>Tier 2:</strong> $399/month - with doubled capacity</li>
+                        <li><strong>Tier 3:</strong> $599/month - with tripled capacity</li>
+                    </ul>
+                    <ul class="tiers-list hidden" id="fixed-tiers-list-cop">
+                        <li><strong>Nivel 1:</strong> $815.900 COP/mes (base) - hasta el umbral de uso</li>
+                        <li><strong>Nivel 2:</strong> $1.635.900 COP/mes - con capacidad duplicada</li>
+                        <li><strong>Nivel 3:</strong> $2.455.900 COP/mes - con capacidad triplicada</li>
+                    </ul>
+                    <p>Additional tiers available for enterprise-level usage</p>
+                </div>
+                
+                <a href="https://cal.com/samuel-arbol-ai" class="cta-btn">Schedule a Demo</a>
+                <p class="plan-note">Pricing effective as of April 2025. Terms and conditions apply.</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-container">
+            <img src="images/logo.png" alt="Arbol AI Logo" class="footer-logo">
+            <div class="footer-info">
+                <p data-translate="copyright">&copy; 2025 Arbol AI. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load the header component -->
+    <script src="/js/header-loader.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Plan toggle functionality
+            const toggleBtns = document.querySelectorAll('.toggle-btn');
+            const successBasedPricing = document.getElementById('success-based-pricing');
+            const fixedPricing = document.getElementById('fixed-pricing');
+            
+            toggleBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    toggleBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show the selected pricing plan
+                    const plan = this.getAttribute('data-plan');
+                    if (plan === 'success-based') {
+                        successBasedPricing.classList.remove('hidden');
+                        fixedPricing.classList.add('hidden');
+                    } else {
+                        successBasedPricing.classList.add('hidden');
+                        fixedPricing.classList.remove('hidden');
+                    }
+                });
+            });
+            
+            // Currency toggle functionality
+            const currencyBtns = document.querySelectorAll('.currency-btn');
+            
+            // USD elements
+            const successBasePriceUSD = document.getElementById('success-base-price-usd');
+            const successFeeUSD = document.getElementById('success-fee-usd');
+            const tiersListUSD = document.getElementById('tiers-list-usd');
+            const fixedBasePriceUSD = document.getElementById('fixed-base-price-usd');
+            const setupFeeUSD = document.getElementById('setup-fee-usd');
+            const fixedTiersListUSD = document.getElementById('fixed-tiers-list-usd');
+            
+            // COP elements
+            const successBasePriceCOP = document.getElementById('success-base-price-cop');
+            const successFeeCOP = document.getElementById('success-fee-cop');
+            const tiersListCOP = document.getElementById('tiers-list-cop');
+            const fixedBasePriceCOP = document.getElementById('fixed-base-price-cop');
+            const setupFeeCOP = document.getElementById('setup-fee-cop');
+            const fixedTiersListCOP = document.getElementById('fixed-tiers-list-cop');
+            
+            currencyBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    currencyBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show the selected currency prices
+                    const currency = this.getAttribute('data-currency');
+                    if (currency === 'usd') {
+                        // Show USD
+                        successBasePriceUSD.classList.remove('hidden');
+                        successFeeUSD.classList.remove('hidden');
+                        tiersListUSD.classList.remove('hidden');
+                        fixedBasePriceUSD.classList.remove('hidden');
+                        setupFeeUSD.classList.remove('hidden');
+                        fixedTiersListUSD.classList.remove('hidden');
+                        
+                        // Hide COP
+                        successBasePriceCOP.classList.add('hidden');
+                        successFeeCOP.classList.add('hidden');
+                        tiersListCOP.classList.add('hidden');
+                        fixedBasePriceCOP.classList.add('hidden');
+                        setupFeeCOP.classList.add('hidden');
+                        fixedTiersListCOP.classList.add('hidden');
+                    } else {
+                        // Show COP
+                        successBasePriceCOP.classList.remove('hidden');
+                        successFeeCOP.classList.remove('hidden');
+                        tiersListCOP.classList.remove('hidden');
+                        fixedBasePriceCOP.classList.remove('hidden');
+                        setupFeeCOP.classList.remove('hidden');
+                        fixedTiersListCOP.classList.remove('hidden');
+                        
+                        // Hide USD
+                        successBasePriceUSD.classList.add('hidden');
+                        successFeeUSD.classList.add('hidden');
+                        tiersListUSD.classList.add('hidden');
+                        fixedBasePriceUSD.classList.add('hidden');
+                        setupFeeUSD.classList.add('hidden');
+                        fixedTiersListUSD.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
