@@ -7,6 +7,14 @@ window.translations = {
         'en': 'Contact',
         'es': 'Contacto'
     },
+    'pricing-btn': {
+        'en': 'Pricing',
+        'es': 'Precios'
+    },
+    'talk-to-sales': {
+        'en': 'Talk to sales',
+        'es': 'Hablar con ventas'
+    },
     
     // Index page
     'hero-title': {
@@ -38,5 +46,39 @@ window.translations = {
     'download-pdf': {
         'en': 'Download PDF',
         'es': 'Descargar PDF'
+    },
+    
+    // Pricing page
+    'pricing-title': {
+        'en': 'Pricing',
+        'es': 'Precios'
+    },
+    'pricing-subtitle': {
+        'en': 'Two-Part Pricing Structure',
+        'es': 'Estructura de Precios de Dos Partes'
+    },
+    'monthly-subscription': {
+        'en': 'Monthly Subscription',
+        'es': 'Suscripción Mensual'
+    },
+    'success-fee': {
+        'en': 'Success-Based Fee',
+        'es': 'Tarifa Basada en Resultados'
+    },
+    'growth-scaling': {
+        'en': 'Growth-Based Scaling',
+        'es': 'Escalado Basado en el Crecimiento'
+    },
+    'model-works': {
+        'en': 'Why This Model Works',
+        'es': 'Por Qué Funciona Este Modelo'
+    },
+    'scenario-examples': {
+        'en': 'Scenario Examples',
+        'es': 'Ejemplos de Escenarios'
+    },
+    'get-started': {
+        'en': 'How to Get Started',
+        'es': 'Cómo Empezar'
     }
 };

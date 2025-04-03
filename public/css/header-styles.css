@@ -1,11 +1,10 @@
 /* Header Styles */
 header {
-    background-color: var(--pure-black);
-    color: var(--white);
     padding: 1rem 0;
     position: relative;
     z-index: 100;
     width: 100%;
+    transition: background-color 0.3s ease;
 }
 
 .header-container {
@@ -56,6 +55,11 @@ header {
 
 .btn-outline:hover {
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-outline.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: 600;
 }
 
 /* Media queries for responsive design */

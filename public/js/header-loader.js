@@ -24,9 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Update contact information from config
                 updateContactInfo();
                 
-                // Apply transparent header to both index and brochure pages
+                // Apply styles based on the current page
                 if (currentPath === '/' || currentPath === '/index.html' || currentPath === '/brochure' || currentPath === '/brochure.html') {
-                    // Transparent header style
+                    // Transparent header style for homepage and brochure
                     header.style.backgroundColor = 'transparent';
                     header.style.position = 'absolute';
                     header.style.width = '100%';
@@ -39,10 +39,49 @@ document.addEventListener('DOMContentLoaded', function() {
                         button.style.borderColor = 'var(--pure-black)';
                         button.style.color = 'var(--pure-black)';
                     });
+                } else if (currentPath === '/pricing' || currentPath === '/pricing.html') {
+                    // Custom style for pricing page - transparent background
+                    header.style.backgroundColor = 'transparent';
+                    header.style.position = 'absolute';
+                    header.style.width = '100%';
+                    header.style.top = '0';
+                    header.style.left = '0';
+                    
+                    // Set button styles for pricing page
+                    const buttons = header.querySelectorAll('.btn-outline');
+                    buttons.forEach(button => {
+                        button.style.borderColor = 'var(--pure-black)';
+                        button.style.color = 'var(--pure-black)';
+                    });
+                    
+                    // Highlight the pricing button
+                    const pricingButton = Array.from(buttons).find(btn => btn.getAttribute('href') === '/pricing');
+                    if (pricingButton) {
+                        pricingButton.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+                        pricingButton.style.fontWeight = '600';
+                    }
+                } else {
+                    // Default solid header style for any other pages
+                    header.style.backgroundColor = 'var(--pure-black)';
+                    header.style.position = 'fixed';
+                    header.style.width = '100%';
+                    header.style.top = '0';
+                    header.style.left = '0';
+                    header.style.zIndex = '1000';
+                    
+                    // Change button styles for solid header
+                    const buttons = header.querySelectorAll('.btn-outline');
+                    buttons.forEach(button => {
+                        button.style.borderColor = 'var(--white)';
+                        button.style.color = 'var(--white)';
+                    });
                 }
                 
                 // Apply translations based on browser language
                 applyTranslations();
+                
+                // Highlight the current page in the navigation
+                highlightCurrentPage();
             }
         })
         .catch(error => {
@@ -106,6 +145,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Update email link
                     link.href = `mailto:${window.siteConfig.contact.email}`;
                     link.textContent = window.siteConfig.contact.email;
+                } else if (link.href.includes('cal.com') && window.siteConfig.contact.calendly) {
+                    // Update calendly link
+                    link.href = window.siteConfig.contact.calendly;
                 }
             });
         }
@@ -122,10 +164,26 @@ document.addEventListener('DOMContentLoaded', function() {
         
         translatableElements.forEach(element => {
             const key = element.getAttribute('data-translate');
-            if (key && window.translations) {
+            if (key && window.translations && window.translations[key]) {
                 element.textContent = isSpanish ? 
                     window.translations[key].es : 
                     window.translations[key].en;
+            }
+        });
+    }
+    
+    // Function to highlight the current page in the navigation
+    function highlightCurrentPage() {
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('header a');
+        
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === currentPath || 
+                (currentPath === '/' && href === '/index.html') ||
+                (currentPath === '/index.html' && href === '/')) {
+                link.classList.add('active');
+                // Add any additional styling for active link if needed
             }
         });
     }
