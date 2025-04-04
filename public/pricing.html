@@ -249,13 +249,33 @@
         }
         
         .tiers-list li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             padding-left: 1rem;
             position: relative;
         }
         
         .tiers-list li:before {
             content: "•";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .tier-details {
+            margin-top: 0.25rem;
+            margin-bottom: 0.5rem;
+            margin-left: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .tier-details li {
+            margin-bottom: 0.2rem;
+            padding-left: 0.75rem;
+            position: relative;
+        }
+        
+        .tier-details li:before {
+            content: "-";
             position: absolute;
             left: 0;
             top: 0;
@@ -388,15 +408,15 @@
                 </div>
                 
                 <div class="plan-price" id="success-base-price-usd">
-                    <span class="currency">$</span>199<span class="period">/month</span>
+                    <span class="currency">$</span>520<span class="period">/month</span>
                 </div>
                 
                 <div class="plan-price hidden" id="success-base-price-cop">
-                    <span class="currency">$</span>815.900<span class="period">/month</span>
+                    <span class="currency">$</span>2.132.000<span class="period">/month</span>
                 </div>
                 
                 <div class="plan-description">
-                    <p>Base subscription that includes all core features and covers up to 500,000 interactions per month.</p>
+                    <p>Base subscription that includes all core features with comprehensive voice, chat, and email capabilities.</p>
                 </div>
                 
                 <div class="additional-fees">
@@ -422,14 +442,50 @@
                     <h3>Growth-Based Scaling</h3>
                     <p>As your business grows and usage increases:</p>
                     <ul class="tiers-list" id="tiers-list-usd">
-                        <li><strong>Tier 1:</strong> $199/month (base) - up to usage threshold</li>
-                        <li><strong>Tier 2:</strong> $399/month - with doubled capacity</li>
-                        <li><strong>Tier 3:</strong> $599/month - with tripled capacity</li>
+                        <li><strong>Tier 1:</strong> $520/month (base)
+                            <ul class="tier-details">
+                                <li>Voice calls: 1,000 minutes</li>
+                                <li>WhatsApp/chat: 5,000 messages</li>
+                                <li>Email responses: 500 emails</li>
+                            </ul>
+                        </li>
+                        <li><strong>Tier 2:</strong> $1,040/month
+                            <ul class="tier-details">
+                                <li>Voice calls: 2,500 minutes</li>
+                                <li>WhatsApp/chat: 12,500 messages</li>
+                                <li>Email responses: 1,250 emails</li>
+                            </ul>
+                        </li>
+                        <li><strong>Tier 3:</strong> $1,560/month
+                            <ul class="tier-details">
+                                <li>Voice calls: 5,000 minutes</li>
+                                <li>WhatsApp/chat: 25,000 messages</li>
+                                <li>Email responses: 2,500 emails</li>
+                            </ul>
+                        </li>
                     </ul>
                     <ul class="tiers-list hidden" id="tiers-list-cop">
-                        <li><strong>Nivel 1:</strong> $815.900 COP/mes (base) - hasta el umbral de uso</li>
-                        <li><strong>Nivel 2:</strong> $1.635.900 COP/mes - con capacidad duplicada</li>
-                        <li><strong>Nivel 3:</strong> $2.455.900 COP/mes - con capacidad triplicada</li>
+                        <li><strong>Nivel 1:</strong> $2.132.000 COP/mes (base)
+                            <ul class="tier-details">
+                                <li>Llamadas de voz: 1,000 minutos</li>
+                                <li>WhatsApp/chat: 5,000 mensajes</li>
+                                <li>Respuestas de correo: 500 emails</li>
+                            </ul>
+                        </li>
+                        <li><strong>Nivel 2:</strong> $4.264.000 COP/mes
+                            <ul class="tier-details">
+                                <li>Llamadas de voz: 2,500 minutos</li>
+                                <li>WhatsApp/chat: 12,500 mensajes</li>
+                                <li>Respuestas de correo: 1,250 emails</li>
+                            </ul>
+                        </li>
+                        <li><strong>Nivel 3:</strong> $6.396.000 COP/mes
+                            <ul class="tier-details">
+                                <li>Llamadas de voz: 5,000 minutos</li>
+                                <li>WhatsApp/chat: 25,000 mensajes</li>
+                                <li>Respuestas de correo: 2,500 emails</li>
+                            </ul>
+                        </li>
                     </ul>
                     <p>Additional tiers available for enterprise-level usage</p>
                 </div>
@@ -447,15 +503,15 @@
                 </div>
                 
                 <div class="plan-price" id="fixed-base-price-usd">
-                    <span class="currency">$</span>199<span class="period">/month</span>
+                    <span class="currency">$</span>520<span class="period">/month</span>
                 </div>
                 
                 <div class="plan-price hidden" id="fixed-base-price-cop">
-                    <span class="currency">$</span>815.900<span class="period">/month</span>
+                    <span class="currency">$</span>2.132.000<span class="period">/month</span>
                 </div>
                 
                 <div class="plan-description">
-                    <p>Fixed monthly subscription with all features included and no additional per-lead charges.</p>
+                    <p>Fixed monthly subscription with all features included and no additional per-lead charges, perfect for businesses that want predictable costs.</p>
                 </div>
                 
                 <div class="additional-fees">
@@ -482,14 +538,50 @@
                     <h3>Growth-Based Scaling</h3>
                     <p>As your business grows and usage increases:</p>
                     <ul class="tiers-list" id="fixed-tiers-list-usd">
-                        <li><strong>Tier 1:</strong> $199/month (base) - up to usage threshold</li>
-                        <li><strong>Tier 2:</strong> $399/month - with doubled capacity</li>
-                        <li><strong>Tier 3:</strong> $599/month - with tripled capacity</li>
+                        <li><strong>Tier 1:</strong> $520/month (base)
+                            <ul class="tier-details">
+                                <li>Voice calls: 1,000 minutes</li>
+                                <li>WhatsApp/chat: 5,000 messages</li>
+                                <li>Email responses: 500 emails</li>
+                            </ul>
+                        </li>
+                        <li><strong>Tier 2:</strong> $1,040/month
+                            <ul class="tier-details">
+                                <li>Voice calls: 2,500 minutes</li>
+                                <li>WhatsApp/chat: 12,500 messages</li>
+                                <li>Email responses: 1,250 emails</li>
+                            </ul>
+                        </li>
+                        <li><strong>Tier 3:</strong> $1,560/month
+                            <ul class="tier-details">
+                                <li>Voice calls: 5,000 minutes</li>
+                                <li>WhatsApp/chat: 25,000 messages</li>
+                                <li>Email responses: 2,500 emails</li>
+                            </ul>
+                        </li>
                     </ul>
                     <ul class="tiers-list hidden" id="fixed-tiers-list-cop">
-                        <li><strong>Nivel 1:</strong> $815.900 COP/mes (base) - hasta el umbral de uso</li>
-                        <li><strong>Nivel 2:</strong> $1.635.900 COP/mes - con capacidad duplicada</li>
-                        <li><strong>Nivel 3:</strong> $2.455.900 COP/mes - con capacidad triplicada</li>
+                        <li><strong>Nivel 1:</strong> $2.132.000 COP/mes (base)
+                            <ul class="tier-details">
+                                <li>Llamadas de voz: 1,000 minutos</li>
+                                <li>WhatsApp/chat: 5,000 mensajes</li>
+                                <li>Respuestas de correo: 500 emails</li>
+                            </ul>
+                        </li>
+                        <li><strong>Nivel 2:</strong> $4.264.000 COP/mes
+                            <ul class="tier-details">
+                                <li>Llamadas de voz: 2,500 minutos</li>
+                                <li>WhatsApp/chat: 12,500 mensajes</li>
+                                <li>Respuestas de correo: 1,250 emails</li>
+                            </ul>
+                        </li>
+                        <li><strong>Nivel 3:</strong> $6.396.000 COP/mes
+                            <ul class="tier-details">
+                                <li>Llamadas de voz: 5,000 minutos</li>
+                                <li>WhatsApp/chat: 25,000 mensajes</li>
+                                <li>Respuestas de correo: 2,500 emails</li>
+                            </ul>
+                        </li>
                     </ul>
                     <p>Additional tiers available for enterprise-level usage</p>
                 </div>
