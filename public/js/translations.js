@@ -1,3 +1,4 @@
+javascript
 /**
  * Translations for Arbol AI website
  */
@@ -22,8 +23,8 @@ window.translations = {
         'es': 'Asistentes IA para empresas.'
     },
     'hero-description': {
-        'en': 'We specialized in developing artificial intelligence tools to help work teams reduce errors and automate processes that involve information interpretation.',
-        'es': 'Somos una compañía colombiana especializada en el desarrollo de herramientas de inteligencia artificial para ayudar a equipos de trabajo a reducir errores y automatizar procesos que involucren interpretación de información.'
+        'en': 'Our AI Agent talks to your leads, follows up like clockwork, and keeps your pipeline warm — so you can focus on closing deals. It\'s like having an assistant that never sleeps and never misses a beat.',
+        'es': 'Nuestro agente de IA habla con tus prospectos, hace seguimiento puntualmente y mantiene tu cartera activa, para que puedas concentrarte en cerrar tratos. Es como tener un asistente que nunca duerme y nunca pierde el ritmo.'
     },
     'view-brochure': {
         'en': 'VIEW BROCHURE',
