@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -281,32 +281,70 @@
             top: 0;
         }
         
-        .currency-toggle {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            gap: 1rem;
-        }
-        
-        .currency-btn {
-            padding: 0.5rem 1rem;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            background-color: transparent;
-        }
-        
-        .currency-btn.active {
-            background-color: var(--pure-black);
-            color: var(--white);
-            border-color: var(--pure-black);
-        }
-        
         .hidden {
             display: none;
+        }
+
+        .voice-clone-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            background-color: var(--neutral-gray);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .voice-clone-toggle h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .voice-clone-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .voice-option {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: var(--white);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .voice-option:hover {
+            border-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        .voice-option.active {
+            border-color: var(--pure-black);
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .voice-option input {
+            margin-right: 0.75rem;
+        }
+        
+        .voice-option-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .voice-option-title {
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        .voice-price-display {
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
         
         footer {
@@ -390,11 +428,6 @@
             <p>Choose the pricing model that works best for your business</p>
         </div>
         
-        <div class="currency-toggle">
-            <button class="currency-btn active" data-currency="usd">USD</button>
-            <button class="currency-btn" data-currency="cop">COP</button>
-        </div>
-        
         <div class="pricing-toggle">
             <div class="toggle-btn active" data-plan="success-based">Success-Based Pricing</div>
             <div class="toggle-btn" data-plan="fixed">Fixed Pricing</div>
@@ -407,12 +440,24 @@
                     <p>Pay only when our AI helps you convert leads</p>
                 </div>
                 
-                <div class="plan-price" id="success-base-price-usd">
-                    <span class="currency">$</span>520<span class="period">/month</span>
-                </div>
-                
-                <div class="plan-price hidden" id="success-base-price-cop">
-                    <span class="currency">$</span>2.132.000<span class="period">/month</span>
+                <div class="voice-clone-toggle">
+                    <h3>Voice Options</h3>
+                    <div class="voice-clone-options">
+                        <label class="voice-option active" id="standard-voice-option-success">
+                            <input type="radio" name="voice-option-success" value="standard" checked>
+                            <div class="voice-option-info">
+                                <span class="voice-option-title">Standard - Without Voice Clone</span>
+                                <span class="voice-price-display">$420/month</span>
+                            </div>
+                        </label>
+                        <label class="voice-option" id="premium-voice-option-success">
+                            <input type="radio" name="voice-option-success" value="premium">
+                            <div class="voice-option-info">
+                                <span class="voice-option-title">Premium - With Voice Clone</span>
+                                <span class="voice-price-display">$750/month</span>
+                            </div>
+                        </label>
+                    </div>
                 </div>
                 
                 <div class="plan-description">
@@ -421,8 +466,7 @@
                 
                 <div class="additional-fees">
                     <h3>Success-Based Fee</h3>
-                    <p id="success-fee-usd"><strong>$50 per successfully converted lead</strong></p>
-                    <p id="success-fee-cop" class="hidden"><strong>$205.000 COP por cada lead convertido exitosamente</strong></p>
+                    <p><strong>$50 per successfully converted lead</strong></p>
                     <p>You only pay when our AI helps you win business</p>
                 </div>
                 
@@ -441,49 +485,26 @@
                 <div>
                     <h3>Growth-Based Scaling</h3>
                     <p>As your business grows and usage increases:</p>
-                    <ul class="tiers-list" id="tiers-list-usd">
-                        <li><strong>Tier 1:</strong> $520/month (base)
+                    <ul class="tiers-list">
+                        <li><strong>Tier 1:</strong> Base price (according to voice option)
                             <ul class="tier-details">
                                 <li>Voice calls: 1,000 minutes</li>
                                 <li>WhatsApp/chat: 5,000 messages</li>
                                 <li>Email responses: 500 emails</li>
                             </ul>
                         </li>
-                        <li><strong>Tier 2:</strong> $1,040/month
+                        <li><strong>Tier 2:</strong> 2x Base price
                             <ul class="tier-details">
                                 <li>Voice calls: 2,500 minutes</li>
                                 <li>WhatsApp/chat: 12,500 messages</li>
                                 <li>Email responses: 1,250 emails</li>
                             </ul>
                         </li>
-                        <li><strong>Tier 3:</strong> $1,560/month
+                        <li><strong>Tier 3:</strong> 3x Base price
                             <ul class="tier-details">
                                 <li>Voice calls: 5,000 minutes</li>
                                 <li>WhatsApp/chat: 25,000 messages</li>
                                 <li>Email responses: 2,500 emails</li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="tiers-list hidden" id="tiers-list-cop">
-                        <li><strong>Nivel 1:</strong> $2.132.000 COP/mes (base)
-                            <ul class="tier-details">
-                                <li>Llamadas de voz: 1,000 minutos</li>
-                                <li>WhatsApp/chat: 5,000 mensajes</li>
-                                <li>Respuestas de correo: 500 emails</li>
-                            </ul>
-                        </li>
-                        <li><strong>Nivel 2:</strong> $4.264.000 COP/mes
-                            <ul class="tier-details">
-                                <li>Llamadas de voz: 2,500 minutos</li>
-                                <li>WhatsApp/chat: 12,500 mensajes</li>
-                                <li>Respuestas de correo: 1,250 emails</li>
-                            </ul>
-                        </li>
-                        <li><strong>Nivel 3:</strong> $6.396.000 COP/mes
-                            <ul class="tier-details">
-                                <li>Llamadas de voz: 5,000 minutos</li>
-                                <li>WhatsApp/chat: 25,000 mensajes</li>
-                                <li>Respuestas de correo: 2,500 emails</li>
                             </ul>
                         </li>
                     </ul>
@@ -502,12 +523,24 @@
                     <p>Predictable monthly cost with one-time setup fee</p>
                 </div>
                 
-                <div class="plan-price" id="fixed-base-price-usd">
-                    <span class="currency">$</span>520<span class="period">/month</span>
-                </div>
-                
-                <div class="plan-price hidden" id="fixed-base-price-cop">
-                    <span class="currency">$</span>2.132.000<span class="period">/month</span>
+                <div class="voice-clone-toggle">
+                    <h3>Voice Options</h3>
+                    <div class="voice-clone-options">
+                        <label class="voice-option active" id="standard-voice-option-fixed">
+                            <input type="radio" name="voice-option-fixed" value="standard" checked>
+                            <div class="voice-option-info">
+                                <span class="voice-option-title">Standard - Without Voice Clone</span>
+                                <span class="voice-price-display">$420/month</span>
+                            </div>
+                        </label>
+                        <label class="voice-option" id="premium-voice-option-fixed">
+                            <input type="radio" name="voice-option-fixed" value="premium">
+                            <div class="voice-option-info">
+                                <span class="voice-option-title">Premium - With Voice Clone</span>
+                                <span class="voice-price-display">$750/month</span>
+                            </div>
+                        </label>
+                    </div>
                 </div>
                 
                 <div class="plan-description">
@@ -516,8 +549,7 @@
                 
                 <div class="additional-fees">
                     <h3>One-Time Setup Fee</h3>
-                    <p id="setup-fee-usd"><strong>$1000 one-time setup fee</strong></p>
-                    <p id="setup-fee-cop" class="hidden"><strong>$4.100.000 COP cargo único de configuración</strong></p>
+                    <p><strong>$1000 one-time setup fee</strong></p>
                     <p>Covers implementation, training, and initial configuration</p>
                 </div>
                 
@@ -537,49 +569,26 @@
                 <div>
                     <h3>Growth-Based Scaling</h3>
                     <p>As your business grows and usage increases:</p>
-                    <ul class="tiers-list" id="fixed-tiers-list-usd">
-                        <li><strong>Tier 1:</strong> $520/month (base)
+                    <ul class="tiers-list">
+                        <li><strong>Tier 1:</strong> Base price (according to voice option)
                             <ul class="tier-details">
                                 <li>Voice calls: 1,000 minutes</li>
                                 <li>WhatsApp/chat: 5,000 messages</li>
                                 <li>Email responses: 500 emails</li>
                             </ul>
                         </li>
-                        <li><strong>Tier 2:</strong> $1,040/month
+                        <li><strong>Tier 2:</strong> 2x Base price
                             <ul class="tier-details">
                                 <li>Voice calls: 2,500 minutes</li>
                                 <li>WhatsApp/chat: 12,500 messages</li>
                                 <li>Email responses: 1,250 emails</li>
                             </ul>
                         </li>
-                        <li><strong>Tier 3:</strong> $1,560/month
+                        <li><strong>Tier 3:</strong> 3x Base price
                             <ul class="tier-details">
                                 <li>Voice calls: 5,000 minutes</li>
                                 <li>WhatsApp/chat: 25,000 messages</li>
                                 <li>Email responses: 2,500 emails</li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="tiers-list hidden" id="fixed-tiers-list-cop">
-                        <li><strong>Nivel 1:</strong> $2.132.000 COP/mes (base)
-                            <ul class="tier-details">
-                                <li>Llamadas de voz: 1,000 minutos</li>
-                                <li>WhatsApp/chat: 5,000 mensajes</li>
-                                <li>Respuestas de correo: 500 emails</li>
-                            </ul>
-                        </li>
-                        <li><strong>Nivel 2:</strong> $4.264.000 COP/mes
-                            <ul class="tier-details">
-                                <li>Llamadas de voz: 2,500 minutos</li>
-                                <li>WhatsApp/chat: 12,500 mensajes</li>
-                                <li>Respuestas de correo: 1,250 emails</li>
-                            </ul>
-                        </li>
-                        <li><strong>Nivel 3:</strong> $6.396.000 COP/mes
-                            <ul class="tier-details">
-                                <li>Llamadas de voz: 5,000 minutos</li>
-                                <li>WhatsApp/chat: 25,000 mensajes</li>
-                                <li>Respuestas de correo: 2,500 emails</li>
                             </ul>
                         </li>
                     </ul>
@@ -596,7 +605,7 @@
         <div class="footer-container">
             <img src="images/logo.png" alt="Arbol AI Logo" class="footer-logo">
             <div class="footer-info">
-                <p data-translate="copyright">&copy; 2025 Arbol AI. Todos los derechos reservados.</p>
+                <p data-translate="copyright">&copy; 2025 Arbol AI. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -631,68 +640,37 @@
                 });
             });
             
-            // Currency toggle functionality
-            const currencyBtns = document.querySelectorAll('.currency-btn');
+            // Voice option toggle functionality for success-based plan
+            const voiceOptionsSuccess = document.querySelectorAll('#success-based-pricing .voice-option');
             
-            // USD elements
-            const successBasePriceUSD = document.getElementById('success-base-price-usd');
-            const successFeeUSD = document.getElementById('success-fee-usd');
-            const tiersListUSD = document.getElementById('tiers-list-usd');
-            const fixedBasePriceUSD = document.getElementById('fixed-base-price-usd');
-            const setupFeeUSD = document.getElementById('setup-fee-usd');
-            const fixedTiersListUSD = document.getElementById('fixed-tiers-list-usd');
-            
-            // COP elements
-            const successBasePriceCOP = document.getElementById('success-base-price-cop');
-            const successFeeCOP = document.getElementById('success-fee-cop');
-            const tiersListCOP = document.getElementById('tiers-list-cop');
-            const fixedBasePriceCOP = document.getElementById('fixed-base-price-cop');
-            const setupFeeCOP = document.getElementById('setup-fee-cop');
-            const fixedTiersListCOP = document.getElementById('fixed-tiers-list-cop');
-            
-            currencyBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    currencyBtns.forEach(b => b.classList.remove('active'));
+            voiceOptionsSuccess.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove active class from all options
+                    voiceOptionsSuccess.forEach(o => o.classList.remove('active'));
                     
-                    // Add active class to clicked button
+                    // Add active class to clicked option
                     this.classList.add('active');
                     
-                    // Show the selected currency prices
-                    const currency = this.getAttribute('data-currency');
-                    if (currency === 'usd') {
-                        // Show USD
-                        successBasePriceUSD.classList.remove('hidden');
-                        successFeeUSD.classList.remove('hidden');
-                        tiersListUSD.classList.remove('hidden');
-                        fixedBasePriceUSD.classList.remove('hidden');
-                        setupFeeUSD.classList.remove('hidden');
-                        fixedTiersListUSD.classList.remove('hidden');
-                        
-                        // Hide COP
-                        successBasePriceCOP.classList.add('hidden');
-                        successFeeCOP.classList.add('hidden');
-                        tiersListCOP.classList.add('hidden');
-                        fixedBasePriceCOP.classList.add('hidden');
-                        setupFeeCOP.classList.add('hidden');
-                        fixedTiersListCOP.classList.add('hidden');
-                    } else {
-                        // Show COP
-                        successBasePriceCOP.classList.remove('hidden');
-                        successFeeCOP.classList.remove('hidden');
-                        tiersListCOP.classList.remove('hidden');
-                        fixedBasePriceCOP.classList.remove('hidden');
-                        setupFeeCOP.classList.remove('hidden');
-                        fixedTiersListCOP.classList.remove('hidden');
-                        
-                        // Hide USD
-                        successBasePriceUSD.classList.add('hidden');
-                        successFeeUSD.classList.add('hidden');
-                        tiersListUSD.classList.add('hidden');
-                        fixedBasePriceUSD.classList.add('hidden');
-                        setupFeeUSD.classList.add('hidden');
-                        fixedTiersListUSD.classList.add('hidden');
-                    }
+                    // Ensure the radio button is checked
+                    const radio = this.querySelector('input[type="radio"]');
+                    radio.checked = true;
+                });
+            });
+            
+            // Voice option toggle functionality for fixed plan
+            const voiceOptionsFixed = document.querySelectorAll('#fixed-pricing .voice-option');
+            
+            voiceOptionsFixed.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove active class from all options
+                    voiceOptionsFixed.forEach(o => o.classList.remove('active'));
+                    
+                    // Add active class to clicked option
+                    this.classList.add('active');
+                    
+                    // Ensure the radio button is checked
+                    const radio = this.querySelector('input[type="radio"]');
+                    radio.checked = true;
                 });
             });
         });
