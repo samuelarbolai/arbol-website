@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 updateContactInfo();
                 
                 // Apply styles based on the current page
-                if (currentPath === '/' || currentPath === '/index.html' || currentPath === '/brochure' || currentPath === '/brochure.html') {
-                    // Transparent header style for homepage and brochure
+                if (currentPath === '/' || currentPath === '/index.html' || currentPath === '/brochure' || currentPath === '/brochure.html' || currentPath === '/coming-soon' || currentPath === '/coming-soon.html') {
+                    // Transparent header style for homepage, brochure, and coming-soon page
                     header.style.backgroundColor = 'transparent';
                     header.style.position = 'absolute';
                     header.style.width = '100%';
