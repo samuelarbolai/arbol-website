@@ -101,5 +101,9 @@ window.translations = {
     'core-features': {
         'en': 'Core Features',
         'es': 'Características Principales'
-    }
+    },
+    'coming-soon-btn': {
+        'en': 'Coming Soon',
+        'es': 'Próximamente'
+    },
 };

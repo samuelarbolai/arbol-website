@@ -24,6 +24,10 @@ app.get('/pricing', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'pricing.html'));
 });
 
+app.get('/coming-soon', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'coming-soon.html'));
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
