@@ -456,5 +456,41 @@
     
     <!-- Load mockup loader -->
     <script src="/js/mockups/loader.js"></script>
+    <script>
+  // Simple diagnostic script to test modal functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('Diagnostic script loaded');
+    
+    // Test clicking on the first feature card
+    const firstCard = document.querySelector('.feature-card');
+    if (firstCard) {
+      console.log('Found first feature card:', firstCard.getAttribute('data-feature'));
+      
+      // Add a simple click handler that works independently of the loader.js
+      firstCard.addEventListener('click', function(event) {
+        console.log('First card clicked directly from diagnostic script');
+        const feature = this.getAttribute('data-feature');
+        const modalId = feature + 'Modal';
+        const modal = document.getElementById(modalId);
+        
+        if (modal) {
+          console.log('Modal found, showing:', modalId);
+          modal.style.display = 'flex';
+        } else {
+          console.error('Modal not found with ID:', modalId);
+        }
+      });
+    } else {
+      console.error('No feature cards found');
+    }
+    
+    // Log all modals for debugging
+    const modals = document.querySelectorAll('.modal-overlay');
+    console.log('Found modals:', modals.length);
+    modals.forEach(modal => {
+      console.log('Modal ID:', modal.id, 'Initial display style:', getComputedStyle(modal).display);
+    });
+  });
+    </script>
 </body>
 </html>

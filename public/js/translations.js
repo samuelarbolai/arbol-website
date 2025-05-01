@@ -1,4 +1,3 @@
-javascript
 /**
  * Translations for Arbol AI website
  */
