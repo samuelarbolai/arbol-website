@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbol AI | Coming Soon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/header-styles.css">
+    <!-- Load site configuration -->
+    <script src="/js/config.js"></script>
+    <!-- Load translations -->
+    <script src="/js/translations.js"></script>
+    <style>
+        :root {
+            --pure-black: #000000;
+            --white: #FFFFFF;
+            --neutral-gray: #F5F5F5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: rgba(0, 0, 0, 0.85);
+            background-color: var(--neutral-gray);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        main {
+            flex: 1;
+            padding-top: 6rem; /* Account for the header */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 2rem;
+            margin: 0 auto;
+        }
+        
+        .page-header {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 2.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--pure-black);
+            margin-bottom: 1.5rem;
+        }
+        
+        p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .artifacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .artifact-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .artifact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .artifact-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: var(--neutral-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .artifact-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .artifact-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .artifact-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--pure-black);
+        }
+        
+        .artifact-description {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .btn {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--pure-black);
+            color: var(--white);
+            border: 1px solid var(--pure-black);
+        }
+        
+        .btn-primary:hover {
+            background-color: #333;
+        }
+        
+        .coming-soon-badge {
+            display: inline-block;
+            background-color: var(--pure-black);
+            color: var(--white);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 3rem 0;
+            background-color: var(--white);
+            width: 100%;
+        }
+        
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        footer {
+            background-color: var(--pure-black);
+            color: var(--white);
+            padding: 1.5rem 0;
+            margin-top: auto;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            height: 30px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-info {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .artifacts-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .page-header {
+                padding: 2rem 0;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header container that will be populated by JavaScript -->
+    <div id="headerContainer"></div>
+    
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1>New Features Coming Soon</h1>
+                <p>We're developing powerful new tools and features to help you automate your sales process, close more deals, and protect your customer data. Check out what's in the pipeline below.</p>
+            </div>
+            
+            <div class="artifacts-grid">
+                <!-- Dashboard Card -->
+                <div class="artifact-card">
+                    <div class="artifact-image">
+                        <img src="/api/placeholder/350/200" alt="AI Sales Dashboard" />
+                    </div>
+                    <div class="artifact-content">
+                        <span class="coming-soon-badge">COMING SOON</span>
+                        <h3 class="artifact-title">Advanced Sales Dashboard</h3>
+                        <p class="artifact-description">Monitor your sales pipeline, track automated calls and messages, and get real-time insights into your conversion rates. Our AI dashboard keeps you in control with detailed metrics and activity logs.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Call Interface Card -->
+                <div class="artifact-card">
+                    <div class="artifact-image">
+                        <img src="/api/placeholder/350/200" alt="AI Call Interface" />
+                    </div>
+                    <div class="artifact-content">
+                        <span class="coming-soon-badge">COMING SOON</span>
+                        <h3 class="artifact-title">Intelligent Call Interface</h3>
+                        <p class="artifact-description">Our AI handles calls with prospects while you monitor in real-time. See conversation transcripts, recommended actions, and schedule appointments automatically. The system manages follow-ups with perfect timing.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Privacy Dashboard Card -->
+                <div class="artifact-card">
+                    <div class="artifact-image">
+                        <img src="/api/placeholder/350/200" alt="Privacy Protection" />
+                    </div>
+                    <div class="artifact-content">
+                        <span class="coming-soon-badge">COMING SOON</span>
+                        <h3 class="artifact-title">Data Privacy Center</h3>
+                        <p class="artifact-description">Your client database deserves military-grade protection. Our privacy center implements AES-256 encryption, isolated data environments, and detailed activity logs, keeping your valuable customer information 100% secure.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Messaging Mockup Card -->
+                <div class="artifact-card">
+                    <div class="artifact-image">
+                        <img src="/api/placeholder/350/200" alt="Multi-channel Messaging" />
+                    </div>
+                    <div class="artifact-content">
+                        <span class="coming-soon-badge">COMING SOON</span>
+                        <h3 class="artifact-title">Multi-channel Communication</h3>
+                        <p class="artifact-description">Engage with prospects across WhatsApp, SMS, and other channels. Our AI handles appointment scheduling, meeting confirmations, and follow-ups with natural, personalized messages that drive response rates.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <div class="cta-container">
+                <h2>Want to be the first to try these features?</h2>
+                <p>Sign up for our beta program and get early access to our newest AI tools as they're released.</p>
+                <a href="https://cal.com/samuel-arbol-ai" class="btn btn-primary">Schedule a Demo</a>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-container">
+            <img src="images/logo.png" alt="Arbol AI Logo" class="footer-logo">
+            <div class="footer-info">
+                <p data-translate="copyright">&copy; 2025 Arbol AI. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load the header component -->
+    <script src="/js/header-loader.js"></script>
+</body>
+</html>
