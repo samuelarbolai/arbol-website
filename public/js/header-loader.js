@@ -34,10 +34,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     header.style.left = '0';
                     
                     // Change button styles for transparent header
-                    const buttons = header.querySelectorAll('.btn-outline');
-                    buttons.forEach(button => {
+                    const outlineButtons = header.querySelectorAll('.btn-outline');
+                    outlineButtons.forEach(button => {
                         button.style.borderColor = 'var(--pure-black)';
                         button.style.color = 'var(--pure-black)';
+                    });
+                    
+                    // Keep dark button styling unchanged
+                    const darkButtons = header.querySelectorAll('.btn-dark');
+                    darkButtons.forEach(button => {
+                        button.style.backgroundColor = 'var(--pure-black)';
+                        button.style.color = 'var(--white)';
+                        button.style.borderColor = 'var(--pure-black)';
                     });
                 } else if (currentPath === '/pricing' || currentPath === '/pricing.html') {
                     // Custom style for pricing page - transparent background
@@ -48,14 +56,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     header.style.left = '0';
                     
                     // Set button styles for pricing page
-                    const buttons = header.querySelectorAll('.btn-outline');
-                    buttons.forEach(button => {
+                    const outlineButtons = header.querySelectorAll('.btn-outline');
+                    outlineButtons.forEach(button => {
                         button.style.borderColor = 'var(--pure-black)';
                         button.style.color = 'var(--pure-black)';
                     });
                     
+                    // Keep dark button styling unchanged
+                    const darkButtons = header.querySelectorAll('.btn-dark');
+                    darkButtons.forEach(button => {
+                        button.style.backgroundColor = 'var(--pure-black)';
+                        button.style.color = 'var(--white)';
+                        button.style.borderColor = 'var(--pure-black)';
+                    });
+                    
                     // Highlight the pricing button
-                    const pricingButton = Array.from(buttons).find(btn => btn.getAttribute('href') === '/pricing');
+                    const pricingButton = Array.from(outlineButtons).find(btn => btn.getAttribute('href') === '/pricing');
                     if (pricingButton) {
                         pricingButton.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
                         pricingButton.style.fontWeight = '600';
@@ -70,10 +86,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     header.style.zIndex = '1000';
                     
                     // Change button styles for solid header
-                    const buttons = header.querySelectorAll('.btn-outline');
-                    buttons.forEach(button => {
+                    const outlineButtons = header.querySelectorAll('.btn-outline');
+                    outlineButtons.forEach(button => {
                         button.style.borderColor = 'var(--white)';
                         button.style.color = 'var(--white)';
+                    });
+                    
+                    // Keep dark button styling but adjust for contrast
+                    const darkButtons = header.querySelectorAll('.btn-dark');
+                    darkButtons.forEach(button => {
+                        button.style.backgroundColor = 'var(--white)';
+                        button.style.color = 'var(--pure-black)';
+                        button.style.borderColor = 'var(--white)';
                     });
                 }
                 
