@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/header-styles.css">
-    <!-- Load site configuration -->
+    <link rel="stylesheet" href="/css/header-styles.css">
     <script src="/js/config.js"></script>
     <!-- Load translations -->
     <script src="/js/translations.js"></script>
@@ -49,37 +49,6 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             z-index: 1000;
-        }
-        
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .nav-link {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 1rem;
-            letter-spacing: 0.02em;
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-block;
-            background-color: transparent;
-            color: var(--pure-black);
-            border: 1px solid var(--pure-black);
-        }
-        
-        .nav-link:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-        
-        .nav-link.active {
-            background-color: var(--pure-black);
-            color: var(--white);
         }
         
         /* Section containers */
@@ -426,21 +395,7 @@
 </head>
 <body>
     <!-- Header with navigation -->
-    <header id="site-header">
-        <div class="header-container">
-            <a href="#hero" id="logo-link">
-                <img src="images/logo.png" alt="Arbol AI Logo" class="logo">
-            </a>
-            
-            <div class="nav-links">
-                <a href="#agents" class="nav-link">Agents</a>
-                <!-- <a href="#capabilities" class="nav-link">Capabilities</a> -->
-                <a href="#pricing" class="nav-link" data-translate="pricing-btn">Pricing</a>
-                <!-- <a href="#coming-soon" class="nav-link" data-translate="coming-soon-btn">Coming Soon</a> -->
-                <a href="https://cal.com/samuel-arbol-ai" class="nav-link" data-translate="talk-to-sales">Talk to sales</a>
-            </div>
-        </div>
-    </header>
+    <div id="headerContainer"></div>
     
     <!-- Hero Section -->
     <section id="hero" class="section">
@@ -651,5 +606,8 @@
             applyTranslations();
         });
     </script>
+
+    <!-- Load the header component -->
+    <script src="/js/header-loader.js"></script>
 </body>
 </html>
