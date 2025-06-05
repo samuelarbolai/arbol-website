@@ -34,31 +34,77 @@
             line-height: 1.6;
             color: rgba(0, 0, 0, 0.85);
             background-color: var(--neutral-gray);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
             overflow-x: hidden;
         }
         
-        /* Header styles are in header-styles.css */
-        
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            align-items: center;
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
         }
         
+        /* Header modifications for fixed navigation */
+        header {
+            position: fixed !important;
+            background-color: rgba(245, 245, 245, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .nav-link {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            background-color: transparent;
+            color: var(--pure-black);
+            border: 1px solid var(--pure-black);
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-link.active {
+            background-color: var(--pure-black);
+            color: var(--white);
+        }
+        
+        /* Section containers */
+        .section {
+            min-height: 100vh;
+            padding-top: 80px; /* Account for fixed header */
+            scroll-margin-top: 80px; /* For smooth scroll positioning */
+        }
+        
+        /* Component containers */
+        .component-container {
+            width: 100%;
+        }
+        
+        /* Hero section styles (keeping original) */
         .hero {
             display: flex;
-            min-height: 0vh;
+            min-height: calc(100vh - 80px);
             padding: 0;
             align-items: center;
-            width: 40%; /* Set hero section to 30% width as requested */
+            width: 40%;
             padding-top: 8%;
             justify-content: center;
             text-align: center;
+            margin: 0 auto;
         }
         
         .hero-container {
@@ -79,6 +125,25 @@
             margin-bottom: 1rem;
         }
         
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 2.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--pure-black);
+            margin-bottom: 1.5rem;
+        }
+        
+        h1 span {
+            color: var(--gold);
+        }
+        
+        p {
+            margin-bottom: 2rem;
+            font-size: 1.125rem;
+        }
+        
         .use-agent-section {
             width: 100%;
             display: flex;
@@ -86,8 +151,114 @@
             justify-content: center;
             align-items: center;
             background-color: var(--neutral-gray);
-            padding: 3rem 8%; /* Added 8% left and right padding */
+            padding: 3rem 8%;
             margin-bottom: 2rem;
+        }
+        
+        .use-agent-container {
+            width: 100%;
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .use-agent-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .agent-columns {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .agent-column {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .btn {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-agent {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--pure-black);
+            color: var(--white);
+            border: 1px solid var(--pure-black);
+        }
+        
+        .btn-primary:hover {
+            background-color: #333;
+            transform: scale(1.02);
+        }
+        
+        /* Video Styles */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-info {
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        .video-info h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--pure-black);
+        }
+        
+        .video-info p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
         }
         
         .capabilities-section {
@@ -141,121 +312,6 @@
             border-radius: 50%;
         }
         
-        .use-agent-container {
-            width: 100%;
-            background-color: var(--white);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .use-agent-title {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            font-size: 1.75rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        
-        .agent-columns {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .agent-column {
-            flex: 1;
-            min-width: 250px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        h1 {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            font-size: 2.5rem;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            color: var(--pure-black);
-            margin-bottom: 1.5rem;
-        }
-        
-        h2 {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 2rem;
-            line-height: 1.2;
-            letter-spacing: -0.01em;
-            color: var(--pure-black);
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        
-        h1 span {
-            color: var(--gold);
-        }
-        
-        p {
-            margin-bottom: 2rem;
-            font-size: 1.125rem;
-        }
-        
-        .btn {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 1rem;
-            letter-spacing: 0.02em;
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-block;
-            text-align: center;
-        }
-        
-        .btn-agent {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-        
-        .btn-primary {
-            background-color: var(--pure-black);
-            color: var(--white);
-            border: 1px solid var(--pure-black);
-        }
-        
-        .btn-primary:hover {
-            background-color: #333;
-            transform: scale(1.02);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            color: var(--pure-black);
-            border: 1px solid var(--pure-black);
-        }
-        
-        .btn-outline:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-        
-        .divider {
-            width: 100%;
-            height: 1px;
-            background-color: rgba(0, 0, 0, 0.1);
-            margin: 0.5rem 0 1.5rem 0;
-        }
-        
         footer {
             background-color: var(--pure-black);
             color: var(--white);
@@ -287,47 +343,9 @@
             align-items: center;
         }
         
-        /* Video Styles */
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-            margin-top: 1.5rem;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .video-info {
-            padding: 1rem 0;
-            text-align: center;
-        }
-        
-        .video-info h3 {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            color: var(--pure-black);
-        }
-        
-        .video-info p {
-            font-size: 0.9rem;
-            margin-bottom: 0;
-        }
-        
         @media (max-width: 992px) {
             .hero {
-                width: 50%; /* Adjust hero width for medium screens */
+                width: 50%;
             }
             
             .agent-columns {
@@ -341,33 +359,33 @@
             }
             
             .use-agent-section {
-                padding: 2rem 8%; /* Keep 8% horizontal padding */
+                padding: 2rem 8%;
             }
             
             .capabilities-section {
-                padding: 2rem 8%; /* Keep 8% horizontal padding */
+                padding: 2rem 8%;
             }
         }
         
         @media (max-width: 768px) {
             .hero {
-                width: 90%; /* Adjust hero width for small screens */
+                width: 90%;
             }
             
             h1 {
                 font-size: 2rem;
             }
             
-            h2 {
+            .capabilities-title {
                 font-size: 1.75rem;
             }
             
             .use-agent-section {
-                padding: 1.5rem 8%; /* Keep 8% horizontal padding */
+                padding: 1.5rem 8%;
             }
             
             .capabilities-section {
-                padding: 1.5rem 8%; /* Keep 8% horizontal padding */
+                padding: 1.5rem 8%;
             }
             
             .use-agent-container {
@@ -392,12 +410,26 @@
     </style>
 </head>
 <body>
-    <!-- Header container that will be populated by JavaScript -->
-    <div id="headerContainer"></div>
+    <!-- Header with navigation -->
+    <header id="site-header">
+        <div class="header-container">
+            <a href="#hero" id="logo-link">
+                <img src="images/logo.png" alt="Arbol AI Logo" class="logo">
+            </a>
+            
+            <div class="nav-links">
+                <a href="#agents" class="nav-link">Agents</a>
+                <!-- <a href="#capabilities" class="nav-link">Capabilities</a> -->
+                <a href="#pricing" class="nav-link" data-translate="pricing-btn">Pricing</a>
+                <!-- <a href="#coming-soon" class="nav-link" data-translate="coming-soon-btn">Coming Soon</a> -->
+                <a href="https://cal.com/samuel-arbol-ai" class="nav-link" data-translate="talk-to-sales">Talk to sales</a>
+            </div>
+        </div>
+    </header>
     
-    <main>
-        <!-- Hero section with 30% width -->
-        <section class="hero">
+    <!-- Hero Section -->
+    <section id="hero" class="section">
+        <div class="hero">
             <div class="hero-container">
                 <div class="hero-content">
                     <h1 data-translate="hero-title">We help you close more deals</h1>
@@ -405,10 +437,12 @@
                     <p data-translate="hero-description">Our AI Agent talks to your leads, follows up like clockwork, and keeps your pipeline warm — so you can focus on closing deals. It's like having an assistant that never sleeps and never misses a beat.</p>
                 </div>
             </div>
-        </section>
-        
-        <!-- Separated "Use our agent" section with 100% width and 8% horizontal padding -->
-        <section class="use-agent-section">
+        </div>
+    </section>
+    
+    <!-- Agents Section -->
+    <section id="agents" class="section">
+        <div class="use-agent-section">
             <div class="use-agent-container">
                 <h3 class="use-agent-title">See our agent in action</h3>
                 <div class="agent-columns">
@@ -444,10 +478,12 @@
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <!-- Agent Capabilities section with white background -->
-        <section class="capabilities-section">
+        </div>
+    </section>
+    
+    <!-- Capabilities Section
+    <section id="capabilities" class="section">
+        <div class="capabilities-section">
             <div class="capabilities-container">
                 <h2 class="capabilities-title">Capabilities of our agent</h2>
                 <ul class="capabilities-list">
@@ -458,9 +494,25 @@
                     <li>Consult documents like pricing, inventories, etc.</li>
                 </ul>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+    -->
     
+    <!-- Pricing Section -->
+    <section id="pricing" class="section">
+        <div class="component-container">
+            <iframe src="/pricing.html" style="width: 100%; height: 100vh; border: none; display: block;"></iframe>
+        </div>
+    </section>
+    
+
+    <!-- Coming Soon Section 
+    <section id="coming-soon" class="section">
+        <div class="component-container">
+            <iframe src="/coming-soon.html" style="width: 100%; height: 100vh; border: none; display: block;"></iframe>
+        </div>
+    </section>
+    -->
     <footer>
         <div class="footer-container">
             <img src="images/logo.png" alt="Arbol AI Logo" class="footer-logo">
@@ -470,17 +522,13 @@
         </div>
     </footer>
 
-    <!-- Load the header component -->
-    <script src="/js/header-loader.js"></script>
-    
-    <!-- Script to dynamically load videos from config -->
+    <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if videoConfig is available
+            // Video loading functionality
             if (window.videoConfig && window.videoConfig.agentVideos) {
                 const videos = window.videoConfig.agentVideos;
                 
-                // Create video for voice agent
                 if (videos.voiceAgent) {
                     createVideo(
                         'voiceVideo',
@@ -491,7 +539,6 @@
                     );
                 }
                 
-                // Create video for chat agent
                 if (videos.chatAgent) {
                     createVideo(
                         'chatVideo',
@@ -502,7 +549,6 @@
                     );
                 }
                 
-                // Create video for email agent
                 if (videos.emailAgent) {
                     createVideo(
                         'emailVideo',
@@ -512,20 +558,8 @@
                         'Asistente de Email'
                     );
                 }
-            } else {
-                // Fallback if config is not available
-                console.warn('Video configuration not found. Using placeholder content.');
-                document.querySelectorAll('.video-container-wrapper').forEach(container => {
-                    container.innerHTML = `
-                        <div class="video-info">
-                            <h3>No se encontraron videos</h3>
-                            <p>Por favor, configure los videos en el archivo video-config.js</p>
-                        </div>
-                    `;
-                });
             }
             
-            // Function to create a video element
             function createVideo(containerId, videoId, title, description, ariaTitle) {
                 const container = document.getElementById(containerId);
                 if (!container) return;
@@ -542,6 +576,64 @@
                     </div>
                 `;
             }
+            
+            // Smooth scroll navigation
+            const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Active navigation highlighting
+            const sections = document.querySelectorAll('.section[id]');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, {
+                threshold: 0.3,
+                rootMargin: '-80px 0px -80px 0px'
+            });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Apply translations
+            function applyTranslations() {
+                const userLang = navigator.language || navigator.userLanguage;
+                const isSpanish = userLang.startsWith('es');
+                
+                const translatableElements = document.querySelectorAll('[data-translate]');
+                
+                translatableElements.forEach(element => {
+                    const key = element.getAttribute('data-translate');
+                    if (key && window.translations && window.translations[key]) {
+                        element.textContent = isSpanish ? 
+                            window.translations[key].es : 
+                            window.translations[key].en;
+                    }
+                });
+            }
+            
+            applyTranslations();
         });
     </script>
 </body>
