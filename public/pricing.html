@@ -8,19 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,300&display=swap" rel="stylesheet">
+    <!-- Load centralized colors first -->
+    <link rel="stylesheet" href="/css/colors.css">
     <!-- Load site configuration -->
     <script src="/js/config.js"></script>
     <!-- Load translations -->
     <script src="/js/translations.js"></script>
-    <style>
-        :root {
-            --pure-black: #000000;
-            --white: #FFFFFF;
-            --neutral-gray: #F5F5F5;
-            --light-green: #E6F7EF;
-            --dark-green: #0A5C36;
-        }
-        
+    <style>        
         * {
             margin: 0;
             padding: 0;
@@ -31,8 +25,8 @@
             font-family: 'Source Serif Pro', serif;
             font-size: 16px;
             line-height: 1.6;
-            color: rgba(0, 0, 0, 0.85);
-            background-color: var(--neutral-gray);
+            color: var(--text-secondary);
+            background-color: var(--background-primary);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -45,7 +39,7 @@
             flex-direction: column;
             align-items: center;
             width: 100%;
-            padding: 2rem 0;
+            padding: 0;
         }
         
         .pricing-header {
@@ -61,7 +55,7 @@
             font-size: 2.5rem;
             line-height: 1.1;
             letter-spacing: -0.02em;
-            color: var(--pure-black);
+            color: var(--text-primary);
             margin-bottom: 1.5rem;
         }
         
@@ -80,9 +74,9 @@
         }
         
         .pricing-tier {
-            background-color: var(--white);
+            background-color: var(--background-secondary);
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px var(--shadow-light);
             padding: 2rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
@@ -91,11 +85,11 @@
         
         .pricing-tier:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 30px var(--shadow-heavy);
         }
         
         .pricing-tier.featured {
-            border: 2px solid var(--pure-black);
+            border: 2px solid var(--accent-primary);
             transform: scale(1.02);
         }
         
@@ -105,8 +99,8 @@
             top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: var(--pure-black);
-            color: var(--white);
+            background-color: var(--accent-primary);
+            color: var(--background-secondary);
             font-family: 'Outfit', sans-serif;
             font-weight: 500;
             font-size: 0.85rem;
@@ -119,7 +113,7 @@
         }
         
         .tier-header {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid var(--border-primary);
             padding-bottom: 1.5rem;
             margin-bottom: 1.5rem;
         }
@@ -128,7 +122,7 @@
             font-family: 'Outfit', sans-serif;
             font-weight: 600;
             font-size: 1.75rem;
-            color: var(--pure-black);
+            color: var(--text-primary);
             margin-bottom: 0.5rem;
         }
         
@@ -143,7 +137,7 @@
             font-size: 2.5rem;
             font-weight: 600;
             margin: 1rem 0;
-            color: var(--pure-black);
+            color: var(--text-primary);
             display: flex;
             align-items: baseline;
         }
@@ -187,7 +181,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            color: var(--dark-green);
+            color: var(--success-text);
             font-weight: bold;
         }
         
@@ -197,8 +191,8 @@
             font-size: 1rem;
             text-decoration: none;
             padding: 1rem 2rem;
-            background-color: var(--pure-black);
-            color: var(--white);
+            background-color: var(--text-primary);
+            color: var(--background-secondary);
             border-radius: 4px;
             display: block;
             text-align: center;
@@ -352,7 +346,7 @@
         
         <div class="pricing-note">
             <p>All plans include our core AI technology and 24/7 support.</p>
-            <p>Need something custom? <a href="https://cal.com/samuel-arbol-ai" style="color: var(--pure-black); text-decoration: underline;">Contact our sales team</a> for enterprise pricing.</p>
+            <p>Need something custom? <a href="https://cal.com/samuel-arbol-ai" style="color: var(--text-primary); text-decoration: underline;">Contact our sales team</a> for enterprise pricing.</p>
         </div>
     </main>
 </body>
