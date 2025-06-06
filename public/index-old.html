@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbol AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/header-styles.css">
+    <!-- Load site configuration -->
+    <script src="/js/config.js"></script>
+    <!-- Load translations -->
+    <script src="/js/translations.js"></script>
+    <!-- Load video configuration -->
+    <script src="/js/video-config.js"></script>
+    <style>
+        :root {
+            --pure-black: #000000;
+            --white: #FFFFFF;
+            --neutral-gray: #F5F5F5;
+            --gold: #B8860B;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(0, 0, 0, 0.85);
+            background-color: var(--neutral-gray);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        /* Header styles are in header-styles.css */
+        
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+        }
+        
+        .hero {
+            display: flex;
+            min-height: 0vh;
+            padding: 0;
+            align-items: center;
+            width: 40%; /* Set hero section to 30% width as requested */
+            padding-top: 8%;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            padding: 0 0.5rem;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .hero-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .use-agent-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--neutral-gray);
+            padding: 3rem 8%; /* Added 8% left and right padding */
+            margin-bottom: 2rem;
+        }
+        
+        .capabilities-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--white);
+            padding: 3rem 8%;
+            margin-bottom: 2rem;
+        }
+        
+        .capabilities-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .capabilities-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .capabilities-list {
+            width: 100%;
+            max-width: 800px;
+            list-style-type: none;
+        }
+        
+        .capabilities-list li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 2rem;
+            font-size: 1.125rem;
+        }
+        
+        .capabilities-list li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            background-color: var(--pure-black);
+            border-radius: 50%;
+        }
+        
+        .use-agent-container {
+            width: 100%;
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .use-agent-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .agent-columns {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .agent-column {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 2.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--pure-black);
+            margin-bottom: 1.5rem;
+        }
+        
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 2rem;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            color: var(--pure-black);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        h1 span {
+            color: var(--gold);
+        }
+        
+        p {
+            margin-bottom: 2rem;
+            font-size: 1.125rem;
+        }
+        
+        .btn {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-agent {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--pure-black);
+            color: var(--white);
+            border: 1px solid var(--pure-black);
+        }
+        
+        .btn-primary:hover {
+            background-color: #333;
+            transform: scale(1.02);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--pure-black);
+            border: 1px solid var(--pure-black);
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .divider {
+            width: 100%;
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.1);
+            margin: 0.5rem 0 1.5rem 0;
+        }
+        
+        footer {
+            background-color: var(--pure-black);
+            color: var(--white);
+            padding: 1.5rem 0;
+            margin-top: auto;
+            width: 100%;
+        }
+        
+        .footer-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            height: 30px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-info {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Video Styles */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-info {
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        .video-info h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--pure-black);
+        }
+        
+        .video-info p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        @media (max-width: 992px) {
+            .hero {
+                width: 50%; /* Adjust hero width for medium screens */
+            }
+            
+            .agent-columns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .agent-column {
+                width: 100%;
+                max-width: 500px;
+            }
+            
+            .use-agent-section {
+                padding: 2rem 8%; /* Keep 8% horizontal padding */
+            }
+            
+            .capabilities-section {
+                padding: 2rem 8%; /* Keep 8% horizontal padding */
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                width: 90%; /* Adjust hero width for small screens */
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            .use-agent-section {
+                padding: 1.5rem 8%; /* Keep 8% horizontal padding */
+            }
+            
+            .capabilities-section {
+                padding: 1.5rem 8%; /* Keep 8% horizontal padding */
+            }
+            
+            .use-agent-container {
+                padding: 1.5rem;
+            }
+            
+            .agent-columns {
+                gap: 3rem;
+            }
+            
+            .capabilities-list li {
+                font-size: 1rem;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header container that will be populated by JavaScript -->
+    <div id="headerContainer"></div>
+    
+    <main>
+        <!-- Hero section with 30% width -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 data-translate="hero-title">We help you close more deals</h1>
+                    
+                    <p data-translate="hero-description">Our AI Agent talks to your leads, follows up like clockwork, and keeps your pipeline warm — so you can focus on closing deals. It's like having an assistant that never sleeps and never misses a beat.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Separated "Use our agent" section with 100% width and 8% horizontal padding -->
+        <section class="use-agent-section">
+            <div class="use-agent-container">
+                <h3 class="use-agent-title">See our agent in action</h3>
+                <div class="agent-columns">
+                    <div class="agent-column">
+                        <a href="tel:+17608256995" class="btn btn-primary btn-agent">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            By Phone Call
+                        </a>
+                        <div id="voiceVideo" class="video-container-wrapper"></div>
+                    </div>
+                    
+                    <div class="agent-column">
+                        <a href="https://wa.me/573228804128" class="btn btn-primary btn-agent">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                            </svg>
+                            By Whatsapp
+                        </a>
+                        <div id="chatVideo" class="video-container-wrapper"></div>
+                    </div>
+                    
+                    <div class="agent-column">
+                        <a href="mailto:andres@arbolai.co" class="btn btn-primary btn-agent">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            By Email
+                        </a>
+                        <div id="emailVideo" class="video-container-wrapper"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Agent Capabilities section with white background -->
+        <section class="capabilities-section">
+            <div class="capabilities-container">
+                <h2 class="capabilities-title">Capabilities of our agent</h2>
+                <ul class="capabilities-list">
+                    <li>Guiding customers in a conversational way.</li>
+                    <li>Clone a voice to make the agent sound like you or better.</li>
+                    <li>Book meetings.</li>
+                    <li>Build and send detailed quotes.</li>
+                    <li>Consult documents like pricing, inventories, etc.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-container">
+            <img src="images/logo.png" alt="Arbol AI Logo" class="footer-logo">
+            <div class="footer-info">
+                <p data-translate="copyright">&copy; 2025 Arbol AI. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load the header component -->
+    <script src="/js/header-loader.js"></script>
+    
+    <!-- Script to dynamically load videos from config -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if videoConfig is available
+            if (window.videoConfig && window.videoConfig.agentVideos) {
+                const videos = window.videoConfig.agentVideos;
+                
+                // Create video for voice agent
+                if (videos.voiceAgent) {
+                    createVideo(
+                        'voiceVideo',
+                        videos.voiceAgent.videoId,
+                        videos.voiceAgent.title,
+                        videos.voiceAgent.description,
+                        'Asistente de Voz'
+                    );
+                }
+                
+                // Create video for chat agent
+                if (videos.chatAgent) {
+                    createVideo(
+                        'chatVideo',
+                        videos.chatAgent.videoId,
+                        videos.chatAgent.title,
+                        videos.chatAgent.description,
+                        'Asistente de Chat'
+                    );
+                }
+                
+                // Create video for email agent
+                if (videos.emailAgent) {
+                    createVideo(
+                        'emailVideo',
+                        videos.emailAgent.videoId,
+                        videos.emailAgent.title,
+                        videos.emailAgent.description,
+                        'Asistente de Email'
+                    );
+                }
+            } else {
+                // Fallback if config is not available
+                console.warn('Video configuration not found. Using placeholder content.');
+                document.querySelectorAll('.video-container-wrapper').forEach(container => {
+                    container.innerHTML = `
+                        <div class="video-info">
+                            <h3>No se encontraron videos</h3>
+                            <p>Por favor, configure los videos en el archivo video-config.js</p>
+                        </div>
+                    `;
+                });
+            }
+            
+            // Function to create a video element
+            function createVideo(containerId, videoId, title, description, ariaTitle) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                
+                const embedUrl = window.videoConfig.getYouTubeEmbedUrl(videoId);
+                
+                container.innerHTML = `
+                    <div class="video-container">
+                        <iframe src="${embedUrl}" title="${ariaTitle}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>${title}</h3>
+                        <p>${description}</p>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

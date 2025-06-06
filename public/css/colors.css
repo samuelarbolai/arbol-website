@@ -1,0 +1,48 @@
+/* 
+ * Arbol AI Color System
+ * Centralized color variables for consistent theming
+ */
+
+ :root {
+    /* New Color Palette */
+    --primary-coral: #FAB5AC;
+    --white: #FFFFFF;
+    --light-green: #D8E6C9;
+    --cream: #FFEBD1;
+    --light-gray: #E6E6DF;
+    
+    /* Legacy mappings for backward compatibility */
+    --pure-black: #000000;
+    --neutral-gray: var(--light-gray);
+    --dark-green: #0A5C36;
+    --gold: #B8860B;
+    
+    /* Semantic color assignments */
+    --background-primary: var(--cream);
+    --background-secondary: var(--white);
+    --background-tertiary: var(--light-gray);
+    --background-accent: var(--light-green);
+    
+    --text-primary: var(--pure-black);
+    --text-secondary: rgba(0, 0, 0, 0.85);
+    --text-muted: rgba(0, 0, 0, 0.6);
+    
+    --accent-primary: var(--primary-coral);
+    --accent-secondary: var(--light-green);
+    
+    --border-primary: rgba(0, 0, 0, 0.1);
+    --border-secondary: rgba(0, 0, 0, 0.05);
+    
+    --success-bg: var(--light-green);
+    --success-text: var(--dark-green);
+    --success-border: rgba(10, 92, 54, 0.2);
+    
+    /* Interactive states */
+    --hover-overlay: rgba(0, 0, 0, 0.05);
+    --active-overlay: rgba(0, 0, 0, 0.1);
+    
+    /* Shadow colors */
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.12);
+    --shadow-heavy: rgba(0, 0, 0, 0.15);
+}
